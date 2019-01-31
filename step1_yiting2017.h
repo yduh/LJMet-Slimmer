@@ -341,10 +341,10 @@ public :
    vector<double>  theJetAK8SoftDropCorr_PtOrdered;
    vector<double>  theJetAK8SoftDrop_PtOrdered;
    vector<double>  theJetAK8DoubleB_JetSubCalc_PtOrdered;
-   vector<double>  theJetAK8PUPPISoftDrop_JMSup_PtOrdered;
-   vector<double>  theJetAK8PUPPISoftDrop_JMSdn_PtOrdered;
-   vector<double>  theJetAK8PUPPISoftDrop_JMRup_PtOrdered;
-   vector<double>  theJetAK8PUPPISoftDrop_JMRdn_PtOrdered;
+   vector<double>  theJetAK8SoftDrop_JMSup_PtOrdered;
+   vector<double>  theJetAK8SoftDrop_JMSdn_PtOrdered;
+   vector<double>  theJetAK8SoftDrop_JMRup_PtOrdered;
+   vector<double>  theJetAK8SoftDrop_JMRdn_PtOrdered;
    vector<double>  theJetAK8SDSubjetNCSVM_PtOrdered;
    vector<double>  theJetAK8SDSubjetNCSVM_bSFup_PtOrdered;
    vector<double>  theJetAK8SDSubjetNCSVM_bSFdn_PtOrdered;
@@ -429,10 +429,6 @@ public :
    vector<int>     NJetsH1btagged_shifts;
    Int_t           NJetsH2btagged;
    vector<int>     NJetsH2btagged_shifts;
-   Int_t           NPuppiH1btagged;
-   vector<int>     NPuppiH1btagged_shifts;
-   Int_t           NPuppiH2btagged;
-   vector<int>     NPuppiH2btagged_shifts;
 
    Float_t         topPt;
    Float_t         topPtGen;

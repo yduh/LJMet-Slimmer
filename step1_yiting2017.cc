@@ -169,12 +169,8 @@ void step1::Loop()
    inputTree->SetBranchStatus("theJetEta_JetSubCalc",1);
    inputTree->SetBranchStatus("theJetPhi_JetSubCalc",1);
    inputTree->SetBranchStatus("theJetEnergy_JetSubCalc",1);
-   //2017
-   //inputTree->SetBranchStatus("theJetCSVb_JetSubCalc",1);
-   //inputTree->SetBranchStatus("theJetCSVbb_JetSubCalc",1);
-   //2018
-   inputTree->SetBranchStatus("AK4JetBDeepCSVb_singleLepCalc",1);
-   inputTree->SetBranchStatus("AK4JetBDeepCSVbb_singleLepCalc",1);
+   inputTree->SetBranchStatus("theJetCSVb_JetSubCalc",1);
+   inputTree->SetBranchStatus("theJetCSVbb_JetSubCalc",1);
    inputTree->SetBranchStatus("theJetAK8DoubleB_JetSubCalc",1);
    //inputTree->SetBranchStatus("theJetCSVc_JetSubCalc",1);
    //inputTree->SetBranchStatus("theJetCSVudsg_JetSubCalc",1);
@@ -363,12 +359,8 @@ void step1::Loop()
    outputTree->Branch("theJetEta_JetSubCalc_PtOrdered",&theJetEta_JetSubCalc_PtOrdered);
    outputTree->Branch("theJetPhi_JetSubCalc_PtOrdered",&theJetPhi_JetSubCalc_PtOrdered);
    outputTree->Branch("theJetEnergy_JetSubCalc_PtOrdered",&theJetEnergy_JetSubCalc_PtOrdered);
-   //2017
-   //outputTree->Branch("theJetCSVb_JetSubCalc_PtOrdered",&theJetCSVb_JetSubCalc_PtOrdered);
-   //outputTree->Branch("theJetCSVbb_JetSubCalc_PtOrdered",&theJetCSVbb_JetSubCalc_PtOrdered);
-   //2018 
-   outputTree->Branch("AK4JetBDeepCSVb_singleLepCalc_PtOrdered",&AK4JetBDeepCSVb_singleLepCalc_PtOrdered);
-   outputTree->Branch("AK4JetBDeepCSVbb_singleLepCalc_PtOrdered",&AK4JetBDeepCSVb_singleLepCalc_PtOrdered);
+   outputTree->Branch("theJetCSVb_JetSubCalc_PtOrdered",&theJetCSVb_JetSubCalc_PtOrdered);
+   outputTree->Branch("theJetCSVbb_JetSubCalc_PtOrdered",&theJetCSVbb_JetSubCalc_PtOrdered);
    //outputTree->Branch("theJetCSVc_JetSubCalc_PtOrdered",&theJetCSVc_JetSubCalc_PtOrdered);
    //outputTree->Branch("theJetCSVudsg_JetSubCalc_PtOrdered",&theJetCSVudsg_JetSubCalc_PtOrdered);
    outputTree->Branch("theJetHFlav_JetSubCalc_PtOrdered",&theJetHFlav_JetSubCalc_PtOrdered);
@@ -1355,12 +1347,8 @@ void step1::Loop()
       theJetEta_JetSubCalc_PtOrdered.clear();
       theJetPhi_JetSubCalc_PtOrdered.clear();
       theJetEnergy_JetSubCalc_PtOrdered.clear();
-	  //2017
-      //theJetCSVb_JetSubCalc_PtOrdered.clear();
-      //theJetCSVbb_JetSubCalc_PtOrdered.clear();
-      //2018
-	  AK4JetBDeepCSVb_singleLepCalc_PtOrdered.clear();
-      AK4JetBDeepCSVbb_singleLepCalc_PtOrdered.clear();
+      theJetCSVb_JetSubCalc_PtOrdered.clear();
+      theJetCSVbb_JetSubCalc_PtOrdered.clear();
       //theJetCSVc_JetSubCalc_PtOrdered.clear();
       //theJetCSVudsg_JetSubCalc_PtOrdered.clear();
       theJetHFlav_JetSubCalc_PtOrdered.clear();
@@ -1371,12 +1359,8 @@ void step1::Loop()
       	theJetEta_JetSubCalc_PtOrdered.push_back(theJetEta_JetSubCalc->at(jetptindpair[ijet].second));
       	theJetPhi_JetSubCalc_PtOrdered.push_back(theJetPhi_JetSubCalc->at(jetptindpair[ijet].second));
       	theJetEnergy_JetSubCalc_PtOrdered.push_back(theJetEnergy_JetSubCalc->at(jetptindpair[ijet].second));
-		//2017
-      	//theJetCSVb_JetSubCalc_PtOrdered.push_back(theJetCSVb_JetSubCalc->at(jetptindpair[ijet].second));
-		//theJetCSVbb_JetSubCalc_PtOrdered.push_back(theJetCSVbb_JetSubCalc->at(jetptindpair[ijet].second));
-		//2018
-      	AK4JetBDeepCSVb_singleLepCalc_PtOrdered.push_back(AK4JetBDeepCSVb_singleLepCalc->at(jetptindpair[ijet].second));
-		AK4JetBDeepCSVb_singleLepCalc_PtOrdered.push_back(AK4JetBDeepCSVb_singleLepCalc->at(jetptindpair[ijet].second));
+      	theJetCSVb_JetSubCalc_PtOrdered.push_back(theJetCSVb_JetSubCalc->at(jetptindpair[ijet].second));
+	theJetCSVbb_JetSubCalc_PtOrdered.push_back(theJetCSVbb_JetSubCalc->at(jetptindpair[ijet].second));
 	//theJetCSVc_JetSubCalc_PtOrdered.push_back(theJetCSVc_JetSubCalc->at(jetptindpair[ijet].second));
 	//theJetCSVudsg_JetSubCalc_PtOrdered.push_back(theJetCSVudsg_JetSubCalc->at(jetptindpair[ijet].second));
       	theJetHFlav_JetSubCalc_PtOrdered.push_back(theJetHFlav_JetSubCalc->at(jetptindpair[ijet].second));
@@ -2961,10 +2945,7 @@ void step1::Loop()
 	deltaR_lepJets.push_back(lepton_lv.DeltaR(jet_lv));
 
         // FOR NOW DON'T USE THE SCALE FACTORS               **** NEED TO CHANGE TO DEEPCSV probb + probbb > 0.4941                          
-	//2017
-	//if(theJetCSVb_JetSubCalc_PtOrdered.at(ijet) + theJetCSVbb_JetSubCalc_PtOrdered.at(ijet) > 0.4941){
-	//2018
-	if(AK4JetBDeepCSVb_singleLepCalc_PtOrdered.at(ijet) + AK4JetBDeepCSVb_singleLepCalc_PtOrdered.at(ijet) > 0.4941){
+	if(theJetCSVb_JetSubCalc_PtOrdered.at(ijet) + theJetCSVbb_JetSubCalc_PtOrdered.at(ijet) > 0.4941){
           NJetsCSV_JetSubCalc += 1;
         }
 	// OK, we're back to using SFs
