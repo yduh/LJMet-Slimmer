@@ -117,14 +117,10 @@ void step1::Loop()
    inputTree->SetBranchStatus("elEnergy_singleLepCalc",1);
    inputTree->SetBranchStatus("elMVAValue_singleLepCalc",1);
    inputTree->SetBranchStatus("elMiniIso_singleLepCalc",1);
-   inputTree->SetBranchStatus("elIsTightBarrel_singleLepCalc",1);
-   inputTree->SetBranchStatus("elIsMediumBarrel_singleLepCalc",1);
-   inputTree->SetBranchStatus("elIsLooseBarrel_singleLepCalc",1);
-   inputTree->SetBranchStatus("elIsVetoBarrel_singleLepCalc",1);
-   inputTree->SetBranchStatus("elIsTIghtEndCap_singleLepCalc",1);
-   inputTree->SetBranchStatus("elIsMediumEndCap_singleLepCalc",1);
-   inputTree->SetBranchStatus("elIsLooseEndCap_singleLepCalc",1);
-   inputTree->SetBranchStatus("elIsVetoEndCap_singleLepCalc",1);
+   inputTree->SetBranchStatus("elIsTight_singleLepCalc",1);
+   inputTree->SetBranchStatus("elIsMedium_singleLepCalc",1);
+   inputTree->SetBranchStatus("elIsLoose_singleLepCalc",1);
+   inputTree->SetBranchStatus("elIsVeto_singleLepCalc",1);
 
    
    //muons  **** ADD MORE/NEW ID BRANCHES *****
@@ -169,8 +165,8 @@ void step1::Loop()
    inputTree->SetBranchStatus("theJetEta_JetSubCalc",1);
    inputTree->SetBranchStatus("theJetPhi_JetSubCalc",1);
    inputTree->SetBranchStatus("theJetEnergy_JetSubCalc",1);
-   inputTree->SetBranchStatus("theJetCSVb_JetSubCalc",1);
-   inputTree->SetBranchStatus("theJetCSVbb_JetSubCalc",1);
+   inputTree->SetBranchStatus("theJetDeepCSVb_JetSubCalc",1);
+   inputTree->SetBranchStatus("theJetDeepCSVbb_JetSubCalc",1);
    inputTree->SetBranchStatus("theJetAK8DoubleB_JetSubCalc",1);
    //inputTree->SetBranchStatus("theJetCSVc_JetSubCalc",1);
    //inputTree->SetBranchStatus("theJetCSVudsg_JetSubCalc",1);
@@ -222,7 +218,6 @@ void step1::Loop()
    inputTree->SetBranchStatus("allTopsPt_TTbarMassCalc",1);
    inputTree->SetBranchStatus("allTopsID_TTbarMassCalc",1);
    inputTree->SetBranchStatus("allTopsStatus_TTbarMassCalc",1);
-   inputTree->SetBranchStatus("isTT_TTbarMassCalc",1);
    inputTree->SetBranchStatus("isTau_singleLepCalc",1);
 
   // ----------------------------------------------------------------------------
@@ -269,7 +264,6 @@ void step1::Loop()
    outputTree->Branch("HTSF_PolUp",&HTSF_PolUp,"HTSF_PolUp/F");
    outputTree->Branch("HTSF_PolDn",&HTSF_PolDn,"HTSF_PolDn/F");
    outputTree->Branch("ttbarMass_TTbarMassCalc",&ttbarMass_TTbarMassCalc,"ttbarMass_TTbarMassCalc/D");
-   outputTree->Branch("isTT_TTbarMassCalc",&isTT_TTbarMassCalc,"isTT_TTbarMassCalc/I");
    outputTree->Branch("isTau_singleLepCalc",&isTau_singleLepCalc,"isTau_singleLepCalc/O");
    outputTree->Branch("corr_met_singleLepCalc",&corr_met_singleLepCalc,"corr_met_singleLepCalc/D");
    outputTree->Branch("corr_met_phi_singleLepCalc",&corr_met_phi_singleLepCalc,"corr_met_phi_singleLepCalc/D");
@@ -283,8 +277,8 @@ void step1::Loop()
    outputTree->Branch("theJetEta_JetSubCalc_PtOrdered",&theJetEta_JetSubCalc_PtOrdered);
    outputTree->Branch("theJetPhi_JetSubCalc_PtOrdered",&theJetPhi_JetSubCalc_PtOrdered);
    outputTree->Branch("theJetEnergy_JetSubCalc_PtOrdered",&theJetEnergy_JetSubCalc_PtOrdered);
-   outputTree->Branch("theJetCSVb_JetSubCalc_PtOrdered",&theJetCSVb_JetSubCalc_PtOrdered);
-   outputTree->Branch("theJetCSVbb_JetSubCalc_PtOrdered",&theJetCSVbb_JetSubCalc_PtOrdered);
+   outputTree->Branch("theJetDeepCSVb_JetSubCalc_PtOrdered",&theJetDeepCSVb_JetSubCalc_PtOrdered);
+   outputTree->Branch("theJetDeepCSVbb_JetSubCalc_PtOrdered",&theJetDeepCSVbb_JetSubCalc_PtOrdered);
    //outputTree->Branch("theJetCSVc_JetSubCalc_PtOrdered",&theJetCSVc_JetSubCalc_PtOrdered);
    //outputTree->Branch("theJetCSVudsg_JetSubCalc_PtOrdered",&theJetCSVudsg_JetSubCalc_PtOrdered);
    outputTree->Branch("theJetHFlav_JetSubCalc_PtOrdered",&theJetHFlav_JetSubCalc_PtOrdered);
@@ -371,14 +365,10 @@ void step1::Loop()
    //outputTree->Branch("AK8JetDeepCSVc_singleLepCalc",&AK8JetDeepCSVc_singleLepCalc);
    //outputTree->Branch("AK8JetDeepCSVudsg_singleLepCalc",&AK8JetDeepCSVudsg_singleLepCalc);
    outputTree->Branch("theJetAK8SDSubjetHFlav_JetSubCalc",&theJetAK8SDSubjetHFlav_JetSubCalc);
-   outputTree->Branch("elIsTightBarrel_singleLepCalc",&elIsTightBarrel_singleLepCalc,"elIsTightBarrel_singleLepCalc/F");
-   outputTree->Branch("elIsMediumBarrel_singleLepCalc",&elIsTightBarrel_singleLepCalc,"elIsMediumBarrel_singleLepCalc/F");
-   outputTree->Branch("elIsLooseBarrel_singleLepCalc",&elIsTightBarrel_singleLepCalc,"elIsLooseBarrel_singleLepCalc/F");
-   outputTree->Branch("elIsVetoBarrel_singleLepCalc",&elIsTightBarrel_singleLepCalc,"elIsVetoBarrel_singleLepCalc/F");
-   outputTree->Branch("elIsTightEndCap_singleLepCalc",&elIsTightBarrel_singleLepCalc,"elIsTightEndCap_singleLepCalc/F");
-   outputTree->Branch("elIsMediumEndCap_singleLepCalc",&elIsTightBarrel_singleLepCalc,"elIsMediumEndCap_singleLepCalc/F");
-   outputTree->Branch("elIsLooseEndCap_singleLepCalc",&elIsTightBarrel_singleLepCalc,"elIsLooseEndCap_singleLepCalc/F");
-   outputTree->Branch("elIsVetoEndCap_singleLepCalc",&elIsTightBarrel_singleLepCalc,"elIsVetoEndCap_singleLepCalc/F");
+   outputTree->Branch("elIsTight_singleLepCalc",&elIsTight_singleLepCalc,"elIsTight_singleLepCalc/F");
+   outputTree->Branch("elIsMedium_singleLepCalc",&elIsTight_singleLepCalc,"elIsMedium_singleLepCalc/F");
+   outputTree->Branch("elIsLoose_singleLepCalc",&elIsTight_singleLepCalc,"elIsLoose_singleLepCalc/F");
+   outputTree->Branch("elIsVeto_singleLepCalc",&elIsTight_singleLepCalc,"elIsVeto_singleLepCalc/F");
 
    outputTree->Branch("theJetAK8Truth_JetSubCalc_PtOrdered",&theJetAK8Truth_JetSubCalc_PtOrdered);
    outputTree->Branch("deltaR_leptonicparticle_AK8_PtOrdered",&deltaR_leptonicparticle_AK8_PtOrdered);
@@ -1101,8 +1091,8 @@ void step1::Loop()
       theJetEta_JetSubCalc_PtOrdered.clear();
       theJetPhi_JetSubCalc_PtOrdered.clear();
       theJetEnergy_JetSubCalc_PtOrdered.clear();
-      theJetCSVb_JetSubCalc_PtOrdered.clear();
-      theJetCSVbb_JetSubCalc_PtOrdered.clear();
+      theJetDeepCSVb_JetSubCalc_PtOrdered.clear();
+      theJetDeepCSVbb_JetSubCalc_PtOrdered.clear();
       //theJetCSVc_JetSubCalc_PtOrdered.clear();
       //theJetCSVudsg_JetSubCalc_PtOrdered.clear();
       theJetHFlav_JetSubCalc_PtOrdered.clear();
@@ -1113,8 +1103,8 @@ void step1::Loop()
       	theJetEta_JetSubCalc_PtOrdered.push_back(theJetEta_JetSubCalc->at(jetptindpair[ijet].second));
       	theJetPhi_JetSubCalc_PtOrdered.push_back(theJetPhi_JetSubCalc->at(jetptindpair[ijet].second));
       	theJetEnergy_JetSubCalc_PtOrdered.push_back(theJetEnergy_JetSubCalc->at(jetptindpair[ijet].second));
-      	theJetCSVb_JetSubCalc_PtOrdered.push_back(theJetCSVb_JetSubCalc->at(jetptindpair[ijet].second));
-	theJetCSVbb_JetSubCalc_PtOrdered.push_back(theJetCSVbb_JetSubCalc->at(jetptindpair[ijet].second));
+      	theJetDeepCSVb_JetSubCalc_PtOrdered.push_back(theJetDeepCSVb_JetSubCalc->at(jetptindpair[ijet].second));
+	theJetDeepCSVbb_JetSubCalc_PtOrdered.push_back(theJetDeepCSVbb_JetSubCalc->at(jetptindpair[ijet].second));
 	//theJetCSVc_JetSubCalc_PtOrdered.push_back(theJetCSVc_JetSubCalc->at(jetptindpair[ijet].second));
 	//theJetCSVudsg_JetSubCalc_PtOrdered.push_back(theJetCSVudsg_JetSubCalc->at(jetptindpair[ijet].second));
       	theJetHFlav_JetSubCalc_PtOrdered.push_back(theJetHFlav_JetSubCalc->at(jetptindpair[ijet].second));
@@ -1787,7 +1777,7 @@ void step1::Loop()
 	deltaR_lepJets.push_back(lepton_lv.DeltaR(jet_lv));
 
         // FOR NOW DON'T USE THE SCALE FACTORS               **** NEED TO CHANGE TO DEEPCSV probb + probbb > 0.4941                          
-	if(theJetCSVb_JetSubCalc_PtOrdered.at(ijet) + theJetCSVbb_JetSubCalc_PtOrdered.at(ijet) > 0.4941){
+	if(theJetDeepCSVb_JetSubCalc_PtOrdered.at(ijet) + theJetDeepCSVbb_JetSubCalc_PtOrdered.at(ijet) > 0.4941){
           NJetsCSV_JetSubCalc += 1;
         }
 	// OK, we're back to using SFs
