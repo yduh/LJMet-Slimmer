@@ -66,15 +66,6 @@ public :
    // NEW BRANCHES
    vector<int>    theJetAK8Truth_JetSubCalc_PtOrdered;
    vector<double> deltaR_leptonicparticle_AK8_PtOrdered; 
-   vector<int>    taggedXXXX_BEST;
-   vector<int>    taggedXXXX_DeepAK8;
-   vector<int>    taggedXXXX_DeepAK8_decorr;
-   vector<int>    leptonicTprimeJetIDs_BEST;
-   vector<int>    leptonicTprimeJetIDs_DeepAK8;
-   vector<int>    leptonicTprimeJetIDs_DeepAK8_decorr;
-   vector<int>    hadronicTprimeJetIDs_BEST;
-   vector<int>    hadronicTprimeJetIDs_DeepAK8;
-   vector<int>    hadronicTprimeJetIDs_DeepAK8_decorr;
 
    vector<double> dnn_B_DeepAK8Calc_PtOrdered;
    vector<double> dnn_T_DeepAK8Calc_PtOrdered;
@@ -97,42 +88,6 @@ public :
    vector<double> decorr_Z_DeepAK8Calc_PtOrdered;
    vector<double> decorr_J_DeepAK8Calc_PtOrdered;
    
-   double Tprime1_BEST_Mass;
-   double Tprime2_BEST_Mass;
-   double Tprime1_BEST_Pt;
-   double Tprime2_BEST_Pt;
-   double Tprime1_BEST_Eta;
-   double Tprime2_BEST_Eta;
-   double Tprime1_BEST_Phi;
-   double Tprime2_BEST_Phi;
-   double Tprime1_BEST_deltaR;
-   double Tprime2_BEST_deltaR;
-   double TprimeAvg_BEST_Mass;
-
-   double Tprime1_DeepAK8_Mass;
-   double Tprime2_DeepAK8_Mass;
-   double Tprime1_DeepAK8_Pt;
-   double Tprime2_DeepAK8_Pt;
-   double Tprime1_DeepAK8_Eta;
-   double Tprime2_DeepAK8_Eta;
-   double Tprime1_DeepAK8_Phi;
-   double Tprime2_DeepAK8_Phi;
-   double Tprime1_DeepAK8_deltaR;
-   double Tprime2_DeepAK8_deltaR;
-   double TprimeAvg_DeepAK8_Mass;
-
-   double Tprime1_DeepAK8_decorr_Mass;
-   double Tprime2_DeepAK8_decorr_Mass;
-   double Tprime1_DeepAK8_decorr_Pt;
-   double Tprime2_DeepAK8_decorr_Pt;
-   double Tprime1_DeepAK8_decorr_Eta;
-   double Tprime2_DeepAK8_decorr_Eta;
-   double Tprime1_DeepAK8_decorr_Phi;
-   double Tprime2_DeepAK8_decorr_Phi;
-   double Tprime1_DeepAK8_decorr_deltaR;
-   double Tprime2_DeepAK8_decorr_deltaR;
-   double TprimeAvg_DeepAK8_decorr_Mass;
-
    bool validDecay_BEST;
    bool validDecay_DeepAK8;
    bool validDecay_DeepAK8_decorr;
@@ -391,12 +346,12 @@ public :
 
    Float_t         topPt;
    Float_t         topPtGen;
+   Float_t         topPtWeight13TeV;
    Float_t         topMass;
    Float_t         tmass;
    Float_t         wmass;
    Float_t         genTopPt;
    Float_t         genAntiTopPt;
-   Float_t         topPtWeight13TeV;
 
    // Declaration of leaf types
    Bool_t          flagBadMu_singleLepCalc;
