@@ -313,17 +313,13 @@ public :
    vector<double>  theJetAK8SoftDropCorr_JetSubCalc_PtOrdered;
    vector<int>     theJetAK8SDSubjetNDeepCSVMSF_JetSubCalc_PtOrdered;
 
-   Int_t           NJetsWtagged_0p6;
-   Int_t           NPuppiWtagged_0p55;
-   Int_t           NJetsWtagged_0p6_notTtagged;
+   Int_t           NJetsWtagged;
    Float_t         WJetLeadPt;
    Float_t         deltaRtopWjet;
    Float_t         deltaPhitopWjet;
    Float_t         deltaRlepWjet;
    Float_t         deltaPhilepWjet;
-   vector<int>     NJetsWtagged_0p6_shifts;
-   vector<int>     NPuppiWtagged_0p55_shifts;
-   vector<int>     NJetsWtagged_0p6_notTtagged_shifts;
+   vector<int>     NJetsWtagged_shifts;
    vector<double>  WJetLeadPt_shifts;
    vector<double>  deltaRtopWjet_shifts;  
    vector<double>  deltaPhitopWjet_shifts; 

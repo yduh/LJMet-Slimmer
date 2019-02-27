@@ -203,16 +203,9 @@ void step1::Loop()
    inputTree->SetBranchStatus("theJetAK8SDSubjetCSVc_JetSubCalc",1);
    inputTree->SetBranchStatus("theJetAK8SDSubjetCSVudsg_JetSubCalc",1);*/
 
-   //adding DeepCSV from singleLepCalc
-   //inputTree->SetBranchStatus("AK8JetDeepCSVb_singleLepCalc",1);
-   //inputTree->SetBranchStatus("AK8JetDeepCSVbb_singleLepCalc",1);
-   //   inputTree->SetBranchStatus("AK8JetDeepCSVc_singleLepCalc",1);
-   //inputTree->SetBranchStatus("AK8JetDeepCSVudsg_singleLepCalc",1);
-   
    //top
-   inputTree->SetBranchStatus("ttbarMass_TTbarMassCalc",1);
    inputTree->SetBranchStatus("topMass_TTbarMassCalc",1);
-
+   inputTree->SetBranchStatus("ttbarMass_TTbarMassCalc",1);
    inputTree->SetBranchStatus("allTopsEnergy_TTbarMassCalc",1);
    inputTree->SetBranchStatus("allTopsEta_TTbarMassCalc",1);
    inputTree->SetBranchStatus("allTopsPhi_TTbarMassCalc",1);
@@ -262,7 +255,6 @@ void step1::Loop()
    outputTree->Branch("HTSF_Pol",&HTSF_Pol,"HTSF_Pol/F");
    outputTree->Branch("HTSF_PolUp",&HTSF_PolUp,"HTSF_PolUp/F");
    outputTree->Branch("HTSF_PolDn",&HTSF_PolDn,"HTSF_PolDn/F");
-   outputTree->Branch("ttbarMass_TTbarMassCalc",&ttbarMass_TTbarMassCalc,"ttbarMass_TTbarMassCalc/D");
    outputTree->Branch("isTau_singleLepCalc",&isTau_singleLepCalc,"isTau_singleLepCalc/O");
    outputTree->Branch("corr_met_singleLepCalc",&corr_met_singleLepCalc,"corr_met_singleLepCalc/D");
    outputTree->Branch("corr_met_phi_singleLepCalc",&corr_met_phi_singleLepCalc,"corr_met_phi_singleLepCalc/D");
@@ -278,8 +270,8 @@ void step1::Loop()
    outputTree->Branch("theJetEnergy_JetSubCalc_PtOrdered",&theJetEnergy_JetSubCalc_PtOrdered);
    outputTree->Branch("theJetDeepCSVb_JetSubCalc_PtOrdered",&theJetDeepCSVb_JetSubCalc_PtOrdered);
    outputTree->Branch("theJetDeepCSVbb_JetSubCalc_PtOrdered",&theJetDeepCSVbb_JetSubCalc_PtOrdered);
-   outputTree->Branch("theJetAK8DoubleB_JetSubCalc_PtOrdered",&theJetAK8DoubleB_JetSubCalc_PtOrdered);
-   //outputTree->Branch("theJetCSVc_JetSubCalc_PtOrdered",&theJetCSVc_JetSubCalc_PtOrdered);
+   outputTree->Branch("theJetAK8DoubleB_JetSubCalc_PtOrdered",&theJetAK8DoubleB_JetSubCalc_PtOrdered);//may need to add the single b tag for AK8
+   //outputTree->Branch("theJetCSVc_JetSubCalc_PtOrdered",&theJetCSVc_JetSubCalc_PtOrdered);//two more options can be added
    //outputTree->Branch("theJetCSVudsg_JetSubCalc_PtOrdered",&theJetCSVudsg_JetSubCalc_PtOrdered);
    outputTree->Branch("theJetHFlav_JetSubCalc_PtOrdered",&theJetHFlav_JetSubCalc_PtOrdered);
    outputTree->Branch("theJetPFlav_JetSubCalc_PtOrdered",&theJetPFlav_JetSubCalc_PtOrdered);
@@ -322,6 +314,8 @@ void step1::Loop()
    outputTree->Branch("theJetAK8Zmatch_JetSubCalc_PtOrdered",&theJetAK8Zmatch_JetSubCalc_PtOrdered);
    outputTree->Branch("theJetAK8Hmatch_JetSubCalc_PtOrdered",&theJetAK8Hmatch_JetSubCalc_PtOrdered);
    outputTree->Branch("theJetAK8MatchedPt_JetSubCalc_PtOrdered",&theJetAK8MatchedPt_JetSubCalc_PtOrdered);
+   outputTree->Branch("theJetAK8Truth_JetSubCalc_PtOrdered",&theJetAK8Truth_JetSubCalc_PtOrdered);
+   
    outputTree->Branch("BJetLeadPt",&BJetLeadPt,"BJetLeadPt/F");
    outputTree->Branch("WJetLeadPt",&WJetLeadPt,"WJetLeadPt/F");//She didn't calculate it at all!
    outputTree->Branch("TJetLeadPt",&TJetLeadPt,"TJetLeadPt/F");//She didn't calculate it at all!
@@ -337,19 +331,16 @@ void step1::Loop()
    outputTree->Branch("NJetsH2btagged",&NJetsH2btagged,"NJetsH2btagged/I");
    outputTree->Branch("NJetsH1btagged_shifts",&NJetsH1btagged_shifts);
    outputTree->Branch("NJetsH2btagged_shifts",&NJetsH2btagged_shifts);
+   outputTree->Branch("NJetsWtagged",&NJetsWtagged,"NJetsWtagged/I");
    
-   outputTree->Branch("topPt",&topPt,"topPt/F");
-   outputTree->Branch("topPtGen",&topPtGen,"topPtGen/F");
-   outputTree->Branch("topPtWeight13TeV",&topPtWeight13TeV,"topPtWeight13TeV/F");
-   outputTree->Branch("topMass",&topMass,"topMass/F");
-   outputTree->Branch("minMleppBjet",&minMleppBjet,"minMleppBjet/F");
-   outputTree->Branch("minMleppJet",&minMleppJet,"mixnMleppJet/F");
+   outputTree->Branch("W_mass",&W_mass);
    outputTree->Branch("genTopPt",&genTopPt,"genTopPt/F");
    outputTree->Branch("genAntiTopPt",&genAntiTopPt,"genAntiTopPt/F");
-   outputTree->Branch("NJetsWtagged_0p6",&NJetsWtagged_0p6,"NJetsWtagged_0p6/I");
-   outputTree->Branch("NPuppiWtagged_0p55",&NPuppiWtagged_0p55,"NPuppiWtagged_0p55/I");
-   outputTree->Branch("NJetsWtagged_0p6_notTtagged",&NJetsWtagged_0p6_notTtagged,"NJetsWtagged_0p6_notTtagged/I");
-   outputTree->Branch("NJetsTtagged_0p81",&NJetsTtagged_0p81,"NJetsTtagged_0p81/I");
+   outputTree->Branch("topPtWeight13TeV",&topPtWeight13TeV,"topPtWeight13TeV/F");
+   outputTree->Branch("topMass_TTbarMassCalc",&topMass_TTbarMassCalc,"topMass_TTbarMassCalc/D");
+   outputTree->Branch("ttbarMass_TTbarMassCalc",&ttbarMass_TTbarMassCalc,"ttbarMass_TTbarMassCalc/D");
+   outputTree->Branch("minMleppBjet",&minMleppBjet,"minMleppBjet/F");
+   outputTree->Branch("minMleppJet",&minMleppJet,"mixnMleppJet/F");
    outputTree->Branch("minDR_leadAK8otherAK8",&minDR_leadAK8otherAK8,"minDR_leadAK8otherAK8/F");
    outputTree->Branch("minDR_lepAK8",&minDR_lepAK8,"minDR_lepAK8/F");
    outputTree->Branch("minDR_lepJet",&minDR_lepJet,"minDR_lepJet/F");
@@ -358,43 +349,17 @@ void step1::Loop()
    outputTree->Branch("deltaR_lepJets",&deltaR_lepJets);
    outputTree->Branch("deltaR_lepBJets",&deltaR_lepBJets);
    outputTree->Branch("deltaR_lepAK8s",&deltaR_lepAK8s);
+
    outputTree->Branch("muIsLoose_singleLepCalc",&muIsLoose_singleLepCalc);
    outputTree->Branch("muIsMedium_singleLepCalc",&muIsMedium_singleLepCalc);
    outputTree->Branch("muIsMediumPrompt_singleLepCalc",&muIsMediumPrompt_singleLepCalc);
    outputTree->Branch("muIsTight_singleLepCalc",&muIsTight_singleLepCalc);
-   //outputTree->Branch("AK8JetDeepCSVb_singleLepCalc",&AK8JetDeepCSVb_singleLepCalc);
-   //outputTree->Branch("AK8JetDeepCSVbb_singleLepCalc",&AK8JetDeepCSVbb_singleLepCalc);
-   //outputTree->Branch("AK8JetDeepCSVc_singleLepCalc",&AK8JetDeepCSVc_singleLepCalc);
-   //outputTree->Branch("AK8JetDeepCSVudsg_singleLepCalc",&AK8JetDeepCSVudsg_singleLepCalc);
    outputTree->Branch("elIsTight_singleLepCalc",&elIsTight_singleLepCalc,"elIsTight_singleLepCalc/F");
    outputTree->Branch("elIsMedium_singleLepCalc",&elIsTight_singleLepCalc,"elIsMedium_singleLepCalc/F");
    outputTree->Branch("elIsLoose_singleLepCalc",&elIsTight_singleLepCalc,"elIsLoose_singleLepCalc/F");
    outputTree->Branch("elIsVeto_singleLepCalc",&elIsTight_singleLepCalc,"elIsVeto_singleLepCalc/F");
-
-   outputTree->Branch("theJetAK8Truth_JetSubCalc_PtOrdered",&theJetAK8Truth_JetSubCalc_PtOrdered);
-   outputTree->Branch("deltaR_leptonicparticle_AK8_PtOrdered",&deltaR_leptonicparticle_AK8_PtOrdered);
-   outputTree->Branch("isValidVLQDecayMode_DeepAK8",&validDecay_DeepAK8);
-   outputTree->Branch("isValidVLQDecayMode_DeepAK8_decorr",&validDecay_DeepAK8_decorr);
-   outputTree->Branch("taggedTHBW_DeepAK8",&taggedTHBW_DeepAK8);
-   outputTree->Branch("taggedTHTH_DeepAK8",&taggedTHTH_DeepAK8);
-   outputTree->Branch("taggedTZBW_DeepAK8",&taggedTZBW_DeepAK8);
-   outputTree->Branch("taggedTZTH_DeepAK8",&taggedTZTH_DeepAK8);
-   outputTree->Branch("taggedTZTZ_DeepAK8",&taggedTZTZ_DeepAK8);
-   outputTree->Branch("taggedBWBW_DeepAK8_decorr",&taggedBWBW_DeepAK8_decorr);
-   outputTree->Branch("taggedTHBW_DeepAK8_decorr",&taggedTHBW_DeepAK8_decorr);
-   outputTree->Branch("taggedTHTH_DeepAK8_decorr",&taggedTHTH_DeepAK8_decorr);
-   outputTree->Branch("taggedTZBW_DeepAK8_decorr",&taggedTZBW_DeepAK8_decorr);
-   outputTree->Branch("taggedTZTH_DeepAK8_decorr",&taggedTZTH_DeepAK8_decorr);
-   outputTree->Branch("taggedTZTZ_DeepAK8_decorr",&taggedTZTZ_DeepAK8_decorr);
-   outputTree->Branch("highPtAK8Jet1_SoftDropCorrectedMass",&highPtAK8Jet1_SoftDropCorrectedMass);
-   outputTree->Branch("highPtAK8Jet2_SoftDropCorrectedMass",&highPtAK8Jet2_SoftDropCorrectedMass);
-   outputTree->Branch("highPtAK8Jet3_SoftDropCorrectedMass",&highPtAK8Jet3_SoftDropCorrectedMass);
-   outputTree->Branch("W_mass",&W_mass);
-   outputTree->Branch("t_mass",&t_mass);
    outputTree->Branch("EGammaGsfSF",&EGammaGsfSF,"EGammaGsfSF/F");
    outputTree->Branch("lepIdSF",&lepIdSF,"lepIdSF/F");
-   outputTree->Branch("isLeptonic_t",&isLeptonic_t);
-   outputTree->Branch("isLeptonic_W",&isLeptonic_W);
 
    // basic cuts
    float metCut=50;
@@ -1283,10 +1248,7 @@ void step1::Loop()
       // AK8 Jet - lepton associations, Top and W taggging
       // ----------------------------------------------------------------------------
 
-      NJetsWtagged_0p6 = 0;
-      NPuppiWtagged_0p55 = 0;
-      NJetsWtagged_0p6_notTtagged = 0;
-      NJetsTtagged_0p81 = 0;
+      NJetsWtagged = 0;
       deltaR_lepAK8s.clear();
       minDR_lepAK8 = 1000;
       minDR_leadAK8otherAK8 = 1000;
@@ -1301,7 +1263,6 @@ void step1::Loop()
       theJetAK8Tmatch_JetSubCalc_PtOrdered.clear();
       theJetAK8MatchedPt_JetSubCalc_PtOrdered.clear();
       theJetAK8Truth_JetSubCalc_PtOrdered.clear();
-      deltaR_leptonicparticle_AK8_PtOrdered.clear();
 
       wjet1_lv.SetPtEtaPhiM(0,0,0,0);
       tjet1_lv.SetPtEtaPhiM(0,0,0,0);
@@ -1310,10 +1271,7 @@ void step1::Loop()
       leadak8.SetPtEtaPhiM(0,0,0,0);
 
       for(int i = 0; i < 8; i++){
-	NJetsWtagged_0p6_shifts.push_back(0);
-	NPuppiWtagged_0p55_shifts.push_back(0);
-	NJetsWtagged_0p6_notTtagged_shifts.push_back(0);
-	NJetsTtagged_0p81_shifts.push_back(0);
+	NJetsWtagged_shifts.push_back(0);
 	WJetLeadPt_shifts.push_back(-99.0);
 	TJetLeadPt_shifts.push_back(-99.0);
       }
@@ -1496,38 +1454,27 @@ void step1::Loop()
 	  bool isPWtagged_JMRdn = (massSD_JMRdn > 65) && (massSD_JMRdn < 105) && (tau21 < 0.45) && (theJetAK8Pt_JetSubCalc_PtOrdered.at(ijet) >= 200);
  
 	  // IF THE JET IS NOT TRUTH-MATCHED, THESE IFS WILL DO NOTHING, SF == 1
-	  int tag_Ptau0p55 = applySF(isPWtagged,Ptau0p55SF,Ptau0p55Eff);
- 	  int tag_Ptau0p55up = applySF(isPWtagged,Ptau0p55SFup,Ptau0p55Eff);
-	  int tag_Ptau0p55dn = applySF(isPWtagged,Ptau0p55SFdn,Ptau0p55Eff);
-	  int tag_Ptau0p55_JMSup = applySF(isPWtagged_JMSup,Ptau0p55SF,Ptau0p55Eff);
-	  int tag_Ptau0p55_JMSdn = applySF(isPWtagged_JMSdn,Ptau0p55SF,Ptau0p55Eff);
-	  int tag_Ptau0p55_JMRup = applySF(isPWtagged_JMRup,Ptau0p55SF,Ptau0p55Eff);
-	  int tag_Ptau0p55_JMRdn = applySF(isPWtagged_JMRdn,Ptau0p55SF,Ptau0p55Eff);
- 	  int tag_Ptaupt0p55up = applySF(isPWtagged,Ptaupt0p55SFup,Ptau0p55Eff);
-	  int tag_Ptaupt0p55dn = applySF(isPWtagged,Ptaupt0p55SFdn,Ptau0p55Eff);
+	  int tag_Ptau = applySF(isPWtagged,Ptau0p55SF,Ptau0p55Eff);
+ 	  int tag_Ptauup = applySF(isPWtagged,Ptau0p55SFup,Ptau0p55Eff);
+	  int tag_Ptaudn = applySF(isPWtagged,Ptau0p55SFdn,Ptau0p55Eff);
+	  int tag_Ptau_JMSup = applySF(isPWtagged_JMSup,Ptau0p55SF,Ptau0p55Eff);
+	  int tag_Ptau_JMSdn = applySF(isPWtagged_JMSdn,Ptau0p55SF,Ptau0p55Eff);
+	  int tag_Ptau_JMRup = applySF(isPWtagged_JMRup,Ptau0p55SF,Ptau0p55Eff);
+	  int tag_Ptau_JMRdn = applySF(isPWtagged_JMRdn,Ptau0p55SF,Ptau0p55Eff);
+ 	  int tag_Ptauptup = applySF(isPWtagged,Ptaupt0p55SFup,Ptau0p55Eff);
+	  int tag_Ptauptdn = applySF(isPWtagged,Ptaupt0p55SFdn,Ptau0p55Eff);
 	  
 	  // Now increase the tag count in the right variable	  
-	  NPuppiWtagged_0p55 += tag_Ptau0p55;
-	  NPuppiWtagged_0p55_shifts[0] += tag_Ptau0p55up;
-	  NPuppiWtagged_0p55_shifts[1] += tag_Ptau0p55dn;
-	  NPuppiWtagged_0p55_shifts[2] += tag_Ptau0p55_JMSup;
-	  NPuppiWtagged_0p55_shifts[3] += tag_Ptau0p55_JMSdn;
-	  NPuppiWtagged_0p55_shifts[4] += tag_Ptau0p55_JMRup;
-	  NPuppiWtagged_0p55_shifts[5] += tag_Ptau0p55_JMRdn;
-	  NPuppiWtagged_0p55_shifts[6] += tag_Ptaupt0p55up;
-	  NPuppiWtagged_0p55_shifts[7] += tag_Ptaupt0p55dn;
+	  NJetsWtagged += tag_Ptau;
+	  NJetsWtagged_shifts[0] += tag_Ptauup;
+	  NJetsWtagged_shifts[1] += tag_Ptaudn;
+	  NJetsWtagged_shifts[2] += tag_Ptau_JMSup;
+	  NJetsWtagged_shifts[3] += tag_Ptau_JMSdn;
+	  NJetsWtagged_shifts[4] += tag_Ptau_JMRup;
+	  NJetsWtagged_shifts[5] += tag_Ptau_JMRdn;
+	  NJetsWtagged_shifts[6] += tag_Ptauptup;
+	  NJetsWtagged_shifts[7] += tag_Ptauptdn;
 
-	  //if(tag_tau0p6){NJetsWtagged_0p6_notTtagged += tag_tau0p6-tag_topTau81;}
-	  //if(tag_tau0p6up){NJetsWtagged_0p6_notTtagged_shifts[0] += tag_tau0p6up-tag_topTau81up;}
-	  //if(tag_tau0p6dn){NJetsWtagged_0p6_notTtagged_shifts[1] += tag_tau0p6dn-tag_topTau81dn;}
-	  //if(tag_tau0p6_JMSup){NJetsWtagged_0p6_notTtagged_shifts[2] += tag_tau0p6_JMSup-tag_topTau81;}//_JMSup
-	  //if(tag_tau0p6_JMSdn){NJetsWtagged_0p6_notTtagged_shifts[3] += tag_tau0p6_JMSdn-tag_topTau81;}//_JMSdn
-	  //if(tag_tau0p6_JMRup){NJetsWtagged_0p6_notTtagged_shifts[4] += tag_tau0p6_JMRup-tag_topTau81;}//_JMRup
-	  //if(tag_tau0p6_JMRdn){NJetsWtagged_0p6_notTtagged_shifts[5] += tag_tau0p6_JMRdn-tag_topTau81;}//_JMRdn
-	  //if(tag_taupt0p6up){NJetsWtagged_0p6_notTtagged_shifts[6] += tag_taupt0p6up-tag_topTau81up;}
-	  //if(tag_taupt0p6dn){NJetsWtagged_0p6_notTtagged_shifts[7] += tag_taupt0p6dn-tag_topTau81dn;}
-	  
-	//
 	}//end of isMC
 	// ------------------------------------------------------------------------------------------------------------------
 	// DATA Calculation second
@@ -1540,10 +1487,8 @@ void step1::Loop()
 	  
 	  bool isWtagged = (massSD > 65) && (massSD < 105) && (tau21 < 0.55) && (theJetAK8Pt_JetSubCalc_PtOrdered.at(ijet) >= 200);
 	  
-	  //NJetsWtagged_0p6 += isWtagged;
-	  NPuppiWtagged_0p55 += isWtagged;
-	  //if(isWtagged){NJetsWtagged_0p6_notTtagged += isWtagged-isTtagged;}
-	  if(NPuppiWtagged_0p55 == 1){
+	  NJetsWtagged += isWtagged;
+	  if(NJetsWtagged == 1){
 	    WJetLeadPt = theJetAK8Pt_JetSubCalc_PtOrdered.at(ijet);
 	    // wjet1_lv.SetPtEtaPhiM(theJetAK8Pt_JetSubCalc_PtOrdered.at(ijet),theJetAK8Eta_JetSubCalc_PtOrdered.at(ijet),
 	    // 			  theJetAK8Phi_JetSubCalc_PtOrdered.at(ijet),mass);
