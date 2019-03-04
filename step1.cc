@@ -380,7 +380,6 @@ void step1::Loop()
    int n_jetstotal        = 0;
    int n_jetsnearlep      = 0;
    int n_jetspassed       = 0;
-   int npass_ThreeJets    = 0;
    int npass_trigger      = 0;
    int npass_mu500        = 0;
    int npass_met          = 0;
@@ -1826,7 +1825,6 @@ void step1::Loop()
    std::cout<<"Npassed_lepPt          = "<<npass_lepPt<<" / "<<nentries<<std::endl;
    std::cout<<"Npassed_HT             = "<<npass_ht<<" / "<<nentries<<std::endl;
    std::cout<<"Npassed_ALL            = "<<npass_all<<" / "<<nentries<<std::endl;
-   std::cout<<"Npassed_ThreeJets      = "<<npass_ThreeJets<<" / "<<nentries<<std::endl;
 
    outputTree->Write();
 
