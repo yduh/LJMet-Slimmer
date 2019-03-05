@@ -1,6 +1,7 @@
 import os,shutil,datetime,time
 import getpass
 from ROOT import *
+
 execfile("/uscms_data/d3/jmanagan/EOSSafeUtils.py")
 
 start_time = time.time()
@@ -10,9 +11,9 @@ shift = sys.argv[1]
 #IO directories must be full paths
 
 relbase = '/uscms_data/d1/yiting11/CMSSW_9_4_6_patch1/'
-inputDir='/eos/uscms/store/user/lpcljm/2018/LJMet94X_1lep_013019/'+shift+'/'
-outputDir='/eos/uscms/store/user/lpcljm/yiting/2017/Feb/'+shift+'/'
-condorDir=relbase+'/src/LJMet-Slimmer/log/2017/Feb/'+shift+'/'
+inputDir = '%s/%s/' %(os.environ['ntupleWhere'],shift) #'/eos/uscms/store/user/lpcljm/2018/LJMet94X_1lep_013019/'+shift+'/'
+outputDir = '%s/%s/' %(os.environ['slimrootWhere'],shift) #'/eos/uscms/store/user/lpcljm/yiting/2017/Feb/'+shift+'/'
+condorDir = '%s/%s/' %(os.environ['logbase'],shift) #relbase+'/src/LJMet-Slimmer/log/2017/Feb/'+shift+'/'
 
 runDir=os.getcwd()
 # Can change the file directory if needed
@@ -26,8 +27,8 @@ gROOT.ProcessLine('.x compileStep1.C')
 cTime=datetime.datetime.now()
 date='%i_%i_%i_%i_%i_%i'%(cTime.year,cTime.month,cTime.day,cTime.hour,cTime.minute,cTime.second)
 
-inDir=inputDir[10:]
-outDir=outputDir[10:]
+inDir=inputDir #[10:]
+outDir=outputDir #[10:]
 
 print 'Getting proxy'
 proxyPath=os.popen('voms-proxy-info -path')
@@ -36,9 +37,8 @@ proxyPath=proxyPath.readline().strip()
 print 'Starting submission'
 count=0
 
-'''
 signalList = [
-	'TprimeTprime_M-1000_TuneCP5_13TeV-madgraph-pythia8',
+	#'TprimeTprime_M-1000_TuneCP5_13TeV-madgraph-pythia8',
 	'TprimeTprime_M-1100_TuneCP5_13TeV-madgraph-pythia8',
 	'TprimeTprime_M-1200_TuneCP5_13TeV-madgraph-pythia8',
 	'TprimeTprime_M-1300_TuneCP5_13TeV-madgraph-pythia8',
@@ -98,40 +98,39 @@ Queue 1"""%dict)
 
 #os._exit(1)
 #, %(RUNDIR)s/csc2015_Dec01.txt, %(RUNDIR)s/ecalscn1043093_Dec01.txt
-'''
 
 dirList = [
-	#'WJetsToLNu_HT-1200To2500_TuneCP5_13TeV-madgraphMLM-pythia8',
-	#'WJetsToLNu_HT-2500ToInf_TuneCP5_13TeV-madgraphMLM-pythia8',
-	#'WJetsToLNu_HT-800To1200_TuneCP5_13TeV-madgraphMLM-pythia8',
-	#'WJetsToLNu_HT-600To800_TuneCP5_13TeV-madgraphMLM-pythia8',
-	#'WJetsToLNu_HT-400To600_TuneCP5_13TeV-madgraphMLM-pythia8',
-    #'WJetsToLNu_HT-200To400_TuneCP5_13TeV-madgraphMLM-pythia8',
+	'WJetsToLNu_HT-1200To2500_TuneCP5_13TeV-madgraphMLM-pythia8',
+	'WJetsToLNu_HT-2500ToInf_TuneCP5_13TeV-madgraphMLM-pythia8',
+	'WJetsToLNu_HT-800To1200_TuneCP5_13TeV-madgraphMLM-pythia8',
+	'WJetsToLNu_HT-600To800_TuneCP5_13TeV-madgraphMLM-pythia8',
+	'WJetsToLNu_HT-400To600_TuneCP5_13TeV-madgraphMLM-pythia8',
+    'WJetsToLNu_HT-200To400_TuneCP5_13TeV-madgraphMLM-pythia8',
 
     'DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8',
-    #'QCD_HT200to300_TuneCP5_13TeV-madgraph-pythia8',
-	#'QCD_HT300to500_TuneCP5_13TeV-madgraph-pythia8',
-	#'QCD_HT500to700_TuneCP5_13TeV-madgraph-pythia8',
-	#'QCD_HT700to1000_TuneCP5_13TeV-madgraph-pythia8',
-	#'QCD_HT1000to1500_TuneCP5_13TeV-madgraph-pythia8',
-	#'QCD_HT1500to2000_TuneCP5_13TeV-madgraph-pythia8',
-	#'QCD_HT2000toInf_TuneCP5_13TeV-madgraph-pythia8',
+    'QCD_HT200to300_TuneCP5_13TeV-madgraph-pythia8',
+	'QCD_HT300to500_TuneCP5_13TeV-madgraph-pythia8',
+	'QCD_HT500to700_TuneCP5_13TeV-madgraph-pythia8',
+	'QCD_HT700to1000_TuneCP5_13TeV-madgraph-pythia8',
+	'QCD_HT1000to1500_TuneCP5_13TeV-madgraph-pythia8',
+	'QCD_HT1500to2000_TuneCP5_13TeV-madgraph-pythia8',
+	'QCD_HT2000toInf_TuneCP5_13TeV-madgraph-pythia8',
 
-    #'ST_s-channel_antitop_leptonDecays_13TeV-PSweights_powheg-pythia',
-    #'ST_s-channel_top_leptonDecays_13TeV-PSweights_powheg-pythia',
-    #'ST_t-channel_antitop_4f_InclusiveDecays_TuneCP5_PSweights_13TeV-powheg-pythia8',
-    #'ST_t-channel_top_4f_InclusiveDecays_TuneCP5_PSweights_13TeV-powheg-pythia8',
-	#'ST_tW_antitop_5f_inclusiveDecays_TuneCP5_PSweights_13TeV-powheg-pythia8',
-	#'ST_tW_top_5f_inclusiveDecays_TuneCP5_PSweights_13TeV-powheg-pythia8',
+    'ST_s-channel_antitop_leptonDecays_13TeV-PSweights_powheg-pythia',
+    'ST_s-channel_top_leptonDecays_13TeV-PSweights_powheg-pythia',
+    'ST_t-channel_antitop_4f_InclusiveDecays_TuneCP5_PSweights_13TeV-powheg-pythia8',
+    'ST_t-channel_top_4f_InclusiveDecays_TuneCP5_PSweights_13TeV-powheg-pythia8',
+	'ST_tW_antitop_5f_inclusiveDecays_TuneCP5_PSweights_13TeV-powheg-pythia8',
+	'ST_tW_top_5f_inclusiveDecays_TuneCP5_PSweights_13TeV-powheg-pythia8',
 
-    #'ttWJets_TuneCP5_13TeV_madgraphMLM_pythia8',
-    #'ttZJets_TuneCP5_13TeV_madgraphMLM_pythia8',
-    #'WW_TuneCP5_13TeV-pythia8',
-    #'WZ_TuneCP5_13TeV-pythia8',
-    #'ZZ_TuneCP5_13TeV-pythia8',
+    'ttWJets_TuneCP5_13TeV_madgraphMLM_pythia8',
+    'ttZJets_TuneCP5_13TeV_madgraphMLM_pythia8',
+    'WW_TuneCP5_13TeV-pythia8',
+    'WZ_TuneCP5_13TeV-pythia8',
+    'ZZ_TuneCP5_13TeV-pythia8',
 
     'TT_Mtt-1000toInf_TuneCP5_PSweights_13TeV-powheg-pythia8',
-	#'TT_Mtt-700to1000_TuneCP5_13TeV-powheg-pythia8',
+	'TT_Mtt-700to1000_TuneCP5_13TeV-powheg-pythia8',
 
 ]
 if shift == 'nominal':

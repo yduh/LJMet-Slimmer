@@ -3,7 +3,7 @@
 import sys, os, time
 import subprocess
 
-subprocess.call(['/uscms/home/yiting11/nobackup/CMSSW_9_4_6_patch1/src/LJMet-Slimmer/environment.sh'])
+subprocess.call(['/uscms/home/yiting11/nobackup/CMSSW_9_4_6_patch1/src/LJMet-Slimmer/setup.sh'])
 
 rootbase_dir_str = '%s/nominal/' %os.environ['rootbase']
 logbase_dir_str = '%s/nominal/' %os.environ['logbase']
@@ -27,8 +27,10 @@ for roots, logs in zip(rootdirs, logdirs):
     print len(numouts), len(numfiles)/20+1,  len(numfiles)/20+1 >= len(numouts)
 
     if len(numfiles)/20+1 >= len(numouts):
-        files = [roots + '/' + f for f in files]
-        command = 'hadd ' + roots + '.root ' + ' '.join(files)
-        #print len(command)
+    #if len(numfiles) != 0:
+        #files = [roots + '/' + f for f in files]
+        #command = 'hadd ' + roots + '.root ' + ' '.join(files)
+        command = 'hadd ' + roots + '.root ' + roots+'/*.root'
+        print command
         os.system(command)
 

@@ -13,6 +13,7 @@
 #include <string>
 #include <vector>
 #include <TH3.h>
+#include <TH1D.h>
 
 using namespace std;
 
@@ -64,7 +65,6 @@ bool step1::applySF(bool& isTagged, float tag_SF, float tag_eff){
 
 void step1::Loop() 
 {
-  
   // ----------------------------------------------------------------------------
   // Turn on input tree branches
   // ----------------------------------------------------------------------------
@@ -221,6 +221,8 @@ void step1::Loop()
    // OUTPUT FILE
    outputFile->cd();
    TTree *outputTree = new TTree("ljmet","ljmet");
+   
+   TH1D *counterHist = new TH1D("nevents","nevents", 10, 0,10);
 
    // ***** EVERY NEW BRANCH NEEDS A LINE HERE ****
    outputTree->Branch("event_CommonCalc",&event_CommonCalc,"event_CommonCalc/L");
@@ -674,6 +676,7 @@ void step1::Loop()
       
       if(jentry % 1000 ==0) std::cout<<"Completed "<<jentry<<" out of "<<nentries<<" events"<<std::endl;
 
+        counterHist->Fill(0.5);
       // ----------------------------------------------------------------------------
       // Filter input file by mass or decay
       // ----------------------------------------------------------------------------
@@ -714,6 +717,7 @@ void step1::Loop()
       if(isSM && isElectron == 1) continue;
       if(isSE && isMuon == 1) continue;
 
+        counterHist->Fill(1.5);
       double leppt = 0;
       double lepeta = 0;
       if(isElectron){leppt = elPt_singleLepCalc->at(0); lepeta = elEta_singleLepCalc->at(0);}
@@ -999,6 +1003,7 @@ void step1::Loop()
 	// ----------------------------------------------------------------------------
 
 	if(theJetPt_JetSubCalc->at(ijet) < jetPtCut || fabs(theJetEta_JetSubCalc->at(ijet)) > jetEtaCut) continue;
+        
 
 	if(isMC){
 	  // ----------------------------------------------------------------------------
@@ -1016,6 +1021,7 @@ void step1::Loop()
 	}
       }
 	
+        counterHist->Fill(2.5);
       // ----------------------------------------------------------------------------
       // Apply pt ordering to AK4 vectors
       // ----------------------------------------------------------------------------
@@ -1138,6 +1144,7 @@ void step1::Loop()
       if(!(isPastMETcut && isPastHTCut && isPastNAK8JetsCut && isPastJetLeadPtCut && isPastLepPtCut && (isPastElEtaCut || isPastMuEtaCut) && isPastJetSubLeadPtCut)) continue;
       npass_all+=1;
       
+        counterHist->Fill(3.5);
       ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       /////////////// ONLY ON SELECTED EVENTS ////////////////////////////////////////////////////////////////////////////////////
@@ -1814,6 +1821,7 @@ void step1::Loop()
       // ----------------------------------------------------------------------------
       
       outputTree->Fill();
+      counterHist->Fill(9.5);
    }
    std::cout<<"Nelectrons             = "<<Nelectrons<<" / "<<nentries<<std::endl;
    std::cout<<"Npassed_ElEta          = "<<npass_ElEta<<" / "<<nentries<<std::endl;
@@ -1826,6 +1834,7 @@ void step1::Loop()
    std::cout<<"Npassed_HT             = "<<npass_ht<<" / "<<nentries<<std::endl;
    std::cout<<"Npassed_ALL            = "<<npass_all<<" / "<<nentries<<std::endl;
 
+   counterHist->Write();
    outputTree->Write();
 
 }
