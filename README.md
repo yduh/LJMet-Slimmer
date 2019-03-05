@@ -7,10 +7,12 @@ To test: give input file name in testStep1.C, copy a relevant step1 onto step1.*
 Run: root -l testStep1.C
 
 
-Set up runCondorSlimmerJobs.py to run over LJMet files stored on Fermilab's EOS.
+Set up 'source setup.sh' 
 
-Run with submitSlimmerJobs.sh
+to run over LJMet files stored on Fermilab's EOS, for example do: 
 
-Hadd output files with hadd.sh after setting up haddoutput.py
+python -u runCondorSlimmerJobs.py nominal
+
+Hadd output files with addjobs.py 
 
 
