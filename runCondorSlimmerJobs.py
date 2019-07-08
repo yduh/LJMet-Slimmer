@@ -187,8 +187,9 @@ dirList = [ #inclusive tt sample only, split tt mass bins
 	'TTToHadronic_TuneCP5_PSweights_13TeV-powheg-pythia8',
 	'TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8',
     ]
-#TTOutList = ['Mtt0to700','Mtt700to1000','Mtt1000toInf']
-TTOutList = ['Mtt700to1000','Mtt1000toInf']
+TTOutList = ['Mtt0to700','Mtt700to1000','Mtt1000toInf']
+#TTOutList = ['Mtt700to1000','Mtt1000toInf']
+#TTOutList = ['Mtt0to700',]
 
 for sample in dirList:
     rootfiles = EOSlist_root_files(inputDir+sample)
