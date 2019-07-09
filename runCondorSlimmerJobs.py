@@ -8,27 +8,53 @@ start_time = time.time()
 
 shift = sys.argv[1]
 
-#IO directories must be full paths
-
+##################################################################
 relbase = '/uscms_data/d1/yiting11/CMSSW_9_4_6_patch1/'
 inputDir = '%s/%s/' %(os.environ['ntupleWhere'],shift) #'/eos/uscms/store/user/lpcljm/2018/LJMet94X_1lep_013019/'+shift+'/'
 outputDir = '%s/%s/' %(os.environ['slimrootWhere'],shift) #'/eos/uscms/store/user/lpcljm/yiting/2017/Feb/'+shift+'/'
 condorDir = '%s/%s/' %(os.environ['logbase'],shift) #relbase+'/src/LJMet-Slimmer/log/2017/Feb/'+shift+'/'
 
+inDir=inputDir
+outDir=outputDir
+
 runDir=os.getcwd()
-# Can change the file directory if needed
-#if '' not in shift: runDirPost = ''
-#else: runDirPost = shift+'Files'
 runDirPost = ''
 print 'Files from',runDirPost
+
+###################################################################
+with open('samples/signalList.txt') as f:
+    lines = f.readlines()
+signalList = [line.rstrip() for line in lines if ('#' not in line and line != '\n')]
+
+with open('samples/ttbarList.txt') as f:
+    lines = f.readlines()
+ttbarList = [line.strip() for line in lines if ('#' not in line and line != '\n')]
+
+with open('samples/otherBckList.txt') as f:
+    lines = f.readlines()
+bckList = [line.rstrip() for line in lines if ('#' not in line and line != '\n')]
+dirList = bckList
+
+if shift == 'nominal':
+    with open('samples/dataList.txt') as f:
+        lines = f.readlines()
+    dataList = [line.rstrip() for line in lines if ('#' not in line and line != '\n')]
+    dirList = bckList + dataList
+
+print 'signalList = ', signalList
+print 'ttbarList = ', ttbarList
+print 'dirList = ', dirList
+
+signalOutList = ['BWBW','TZBW','THBW','TZTH','TZTZ','THTH']
+ttbarOutList = ['Mtt0to700','Mtt700to1000','Mtt1000toInf']
+
+os._exit(1)
+##################################################################
 
 gROOT.ProcessLine('.x compileStep1.C')
 
 cTime=datetime.datetime.now()
 date='%i_%i_%i_%i_%i_%i'%(cTime.year,cTime.month,cTime.day,cTime.hour,cTime.minute,cTime.second)
-
-inDir=inputDir #[10:]
-outDir=outputDir #[10:]
 
 print 'Getting proxy'
 proxyPath=os.popen('voms-proxy-info -path')
@@ -37,19 +63,6 @@ proxyPath=proxyPath.readline().strip()
 print 'Starting submission'
 count=0
 
-signalList = [
-	#'TprimeTprime_M-1000_TuneCP5_13TeV-madgraph-pythia8',
-	'TprimeTprime_M-1100_TuneCP5_13TeV-madgraph-pythia8',
-	'TprimeTprime_M-1200_TuneCP5_13TeV-madgraph-pythia8',
-	'TprimeTprime_M-1300_TuneCP5_13TeV-madgraph-pythia8',
-	'TprimeTprime_M-1400_TuneCP5_13TeV-madgraph-pythia8',
-	'TprimeTprime_M-1500_TuneCP5_13TeV-madgraph-pythia8',
-	'TprimeTprime_M-1600_TuneCP5_13TeV-madgraph-pythia8',
-	'TprimeTprime_M-1700_TuneCP5_13TeV-madgraph-pythia8',
-	'TprimeTprime_M-1800_TuneCP5_13TeV-madgraph-pythia8',
-    ]
-
-signalOutList = ['BWBW','TZBW','THBW','TZTH','TZTZ','THTH']
 
 for sample in signalList:
     rootfiles = EOSlist_root_files(inputDir+sample)
@@ -58,7 +71,6 @@ for sample in signalList:
         os.system('eos root://cmseos.fnal.gov/ mkdir -p '+outDir+sample+'_'+outlabel)
         os.system('mkdir -p '+condorDir+sample+'_'+outlabel)
 
-        #for file in rootfiles:
         tmpcount = 0
         for i in range(0,len(rootfiles),20):
             #        print file
@@ -95,47 +107,8 @@ Queue 1"""%dict)
             os.system('sleep 0.5')
             os.chdir('%s'%(runDir))
             print count, "jobs submitted!!!"
+            print "You can kill jobs by: condor_rm -all -name lpcscheddX.fnal.gov, indicate 'X'"
 
-#os._exit(1)
-#, %(RUNDIR)s/csc2015_Dec01.txt, %(RUNDIR)s/ecalscn1043093_Dec01.txt
-
-dirList = [
-	'WJetsToLNu_HT-1200To2500_TuneCP5_13TeV-madgraphMLM-pythia8',
-	'WJetsToLNu_HT-2500ToInf_TuneCP5_13TeV-madgraphMLM-pythia8',
-	'WJetsToLNu_HT-800To1200_TuneCP5_13TeV-madgraphMLM-pythia8',
-	'WJetsToLNu_HT-600To800_TuneCP5_13TeV-madgraphMLM-pythia8',
-	'WJetsToLNu_HT-400To600_TuneCP5_13TeV-madgraphMLM-pythia8',
-    'WJetsToLNu_HT-200To400_TuneCP5_13TeV-madgraphMLM-pythia8',
-
-    'DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8',
-    'QCD_HT200to300_TuneCP5_13TeV-madgraph-pythia8',
-	'QCD_HT300to500_TuneCP5_13TeV-madgraph-pythia8',
-	'QCD_HT500to700_TuneCP5_13TeV-madgraph-pythia8',
-	'QCD_HT700to1000_TuneCP5_13TeV-madgraph-pythia8',
-	'QCD_HT1000to1500_TuneCP5_13TeV-madgraph-pythia8',
-	'QCD_HT1500to2000_TuneCP5_13TeV-madgraph-pythia8',
-	'QCD_HT2000toInf_TuneCP5_13TeV-madgraph-pythia8',
-
-    'ST_s-channel_antitop_leptonDecays_13TeV-PSweights_powheg-pythia',
-    'ST_s-channel_top_leptonDecays_13TeV-PSweights_powheg-pythia',
-    'ST_t-channel_antitop_4f_InclusiveDecays_TuneCP5_PSweights_13TeV-powheg-pythia8',
-    'ST_t-channel_top_4f_InclusiveDecays_TuneCP5_PSweights_13TeV-powheg-pythia8',
-	'ST_tW_antitop_5f_inclusiveDecays_TuneCP5_PSweights_13TeV-powheg-pythia8',
-	'ST_tW_top_5f_inclusiveDecays_TuneCP5_PSweights_13TeV-powheg-pythia8',
-
-    'ttWJets_TuneCP5_13TeV_madgraphMLM_pythia8',
-    'ttZJets_TuneCP5_13TeV_madgraphMLM_pythia8',
-    'WW_TuneCP5_13TeV-pythia8',
-    'WZ_TuneCP5_13TeV-pythia8',
-    'ZZ_TuneCP5_13TeV-pythia8',
-
-    'TT_Mtt-1000toInf_TuneCP5_PSweights_13TeV-powheg-pythia8',
-	'TT_Mtt-700to1000_TuneCP5_13TeV-powheg-pythia8',
-
-]
-if shift == 'nominal':
-    dirList.append('SingleElectron_31Mar18')
-    dirList.append('SingleMuon_31Mar18')
 
 for sample in dirList:
     os.system('eos root://cmseos.fnal.gov/ mkdir -p '+outDir+sample)
@@ -178,29 +151,19 @@ Queue 1"""%dict)
         os.system('sleep 0.5')
         os.chdir('%s'%(runDir))
         print count, "jobs submitted!!!"
+        print "You can kill jobs by: condor_rm -all -name lpcscheddX.fnal.gov, indicate 'X'"
 
-os._exit(1)
-# #, %(RUNDIR)s/csc2015_Dec01.txt, %(RUNDIR)s/ecalscn1043093_Dec01.txt
 
-dirList = [ #inclusive tt sample only, split tt mass bins
-	'TTTo2L2Nu_TuneCP5_PSweights_13TeV-powheg-pythia8',
-	'TTToHadronic_TuneCP5_PSweights_13TeV-powheg-pythia8',
-	'TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8',
-    ]
-TTOutList = ['Mtt0to700','Mtt700to1000','Mtt1000toInf']
-#TTOutList = ['Mtt700to1000','Mtt1000toInf']
-#TTOutList = ['Mtt0to700',]
 
-for sample in dirList:
+for sample in ttbarList:
     rootfiles = EOSlist_root_files(inputDir+sample)
     relPath = sample
-    for outlabel in TTOutList:
+    for outlabel in ttbarOutList:
         os.system('eos root://cmseos.fnal.gov/ mkdir -p '+outDir+sample+'_'+outlabel)
         os.system('mkdir -p '+condorDir+sample+'_'+outlabel)
 
         tmpcount = 0
         for i in range(0,len(rootfiles),20):
-            #        print file
             rawname = relPath
             count+=1
             tmpcount += 1
@@ -235,9 +198,6 @@ Queue 1"""%dict)
             os.chdir('%s'%(runDir))
             print count, "jobs submitted!!!"
 
-# #, %(RUNDIR)s/csc2015_Dec01.txt, %(RUNDIR)s/ecalscn1043093_Dec01.txt
-
 print("--- %s minutes ---" % (round(time.time() - start_time, 2)/60))
-
 
 
