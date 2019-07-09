@@ -26,8 +26,8 @@ for roots, logs in zip(rootdirs, logdirs):
     #print outs, files
     print len(numouts), len(numfiles)/20+1,  len(numfiles)/20+1 >= len(numouts)
 
-    if len(numfiles)/20+1 >= len(numouts):
-    #if len(numfiles) != 0:
+    #if len(numfiles)/20+1 == len(numouts):
+    if len(numfiles) != 0:
         #files = [roots + '/' + f for f in files]
         #command = 'hadd ' + roots + '.root ' + ' '.join(files)
         command = 'hadd ' + roots + '.root ' + roots+'/*.root'
