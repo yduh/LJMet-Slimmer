@@ -5,8 +5,10 @@ import subprocess
 
 subprocess.call(['/uscms/home/yiting11/nobackup/CMSSW_9_4_6_patch1/src/LJMet-Slimmer/setup.sh'])
 
-rootbase_dir_str = '%s/nominal/' %os.environ['rootbase']
-logbase_dir_str = '%s/nominal/' %os.environ['logbase']
+shift = sys.argv[1]
+
+rootbase_dir_str = '%s/'+shift+'/' %os.environ['rootbase']
+logbase_dir_str = '%s/'+shift+'/' %os.environ['logbase']
 rootfiles = os.listdir(rootbase_dir_str)
 logfiles = os.listdir(logbase_dir_str)
 
