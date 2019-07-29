@@ -1,0 +1,9 @@
+SingleElectronA SingleElectron/singleLep2018/190522_151617/0000  
+SingleElectronB SingleElectron/singleLep2018/190522_151708/0000
+SingleElectronC SingleElectron/singleLep2018/190522_151757/0000  
+SingleElectronD SingleElectron/singleLep2018/190522_151846/0000
+
+SingleMuonA SingleMuon/singleLep2018/190624_133053/0000
+SingleMuonB SingleMuon/singleLep2018/190624_133326/0000
+SingleMuonC SingleMuon/singleLep2018/190628_114957/0000
+SingleMuonD SingleMuon/singleLep2018/190628_115139/0000

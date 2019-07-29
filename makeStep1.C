@@ -1,6 +1,6 @@
 #include "step1.cc"
 
-void makeStep1(TString macroDir, TString inputFile, TString outputFile){
+void makeStep1(TString macroDir, TString inputFile, TString outputFile, TString treeName){
 
   gROOT->SetMacroPath(macroDir);
 
@@ -10,6 +10,6 @@ void makeStep1(TString macroDir, TString inputFile, TString outputFile){
   incl+=macroDir;
   gSystem->AddIncludePath(incl);
 
-  step1 t(inputFile,outputFile);
+  step1 t(inputFile,outputFile, treeName);
   t.Loop();
 }

@@ -8,6 +8,8 @@ inputDir=${3}
 outputDir=${4}
 minid=${5}
 maxid=${6}
+divider=${7}
+treeName=${8}
 
 scratch=${PWD}
 macroDir=${PWD}
@@ -24,7 +26,7 @@ XRDpath=root://cmseos.fnal.gov/$inputDir
 
 for iFile in $(seq $minid $maxid); do
     echo $iFile
-    root -l -b -q makeStep1.C\(\"$macroDir\",\"$XRDpath/${infilename}_${iFile}.root\",\"${outfilename}_${iFile}.root\"\)
+    root -l -b -q makeStep1.C\(\"$macroDir\",\"$XRDpath/${infilename}${divider}${iFile}.root\",\"${outfilename}${divider}${iFile}.root\"\,\"${treeName}\"\)
 done
 
 

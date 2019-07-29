@@ -78,12 +78,16 @@ void step1::Loop()
    inputTree->SetBranchStatus("event_CommonCalc",1);
    inputTree->SetBranchStatus("run_CommonCalc",1);
    inputTree->SetBranchStatus("lumi_CommonCalc",1);
-   inputTree->SetBranchStatus("nPV_singleLepCalc",1);
-   inputTree->SetBranchStatus("nTrueInteractions_singleLepCalc",1);
-   inputTree->SetBranchStatus("MCWeight_singleLepCalc",1);
-   inputTree->SetBranchStatus("LHEweightids_singleLepCalc",1);
-   inputTree->SetBranchStatus("LHEweights_singleLepCalc",1);
-   inputTree->SetBranchStatus("HTfromHEPUEP_singleLepCalc",1);
+   //inputTree->SetBranchStatus("nPV_MultiLepCalc",1);
+   inputTree->SetBranchStatus("nTrueInteractions_MultiLepCalc",1);
+   inputTree->SetBranchStatus("MCWeight_MultiLepCalc",1);
+   inputTree->SetBranchStatus("LHEweightids_MultiLepCalc",1);
+   inputTree->SetBranchStatus("LHEweights_MultiLepCalc",1);
+   inputTree->SetBranchStatus("NewPDFweights_MultiLepCalc",1);
+   inputTree->SetBranchStatus("HTfromHEPUEP_MultiLepCalc",1);
+   inputTree->SetBranchStatus("L1NonPrefiringProb_CommonCalc",1);
+   inputTree->SetBranchStatus("L1NonPrefiringProbUp_CommonCalc",1);
+   inputTree->SetBranchStatus("L1NonPrefiringProbDown_CommonCalc",1);
 
    inputTree->SetBranchStatus("isTHBW_TpTpCalc",1);
    inputTree->SetBranchStatus("isTHTH_TpTpCalc",1);
@@ -101,42 +105,44 @@ void step1::Loop()
    inputTree->SetBranchStatus("NLeptonDecays_TpTpCalc",1);
    
    //triggers
-   inputTree->SetBranchStatus("vsSelMCTriggersEl_singleLepCalc",1);
-   inputTree->SetBranchStatus("viSelMCTriggersEl_singleLepCalc",1);
-   inputTree->SetBranchStatus("vsSelMCTriggersMu_singleLepCalc",1);
-   inputTree->SetBranchStatus("viSelMCTriggersMu_singleLepCalc",1);
-   inputTree->SetBranchStatus("vsSelTriggersEl_singleLepCalc",1);
-   inputTree->SetBranchStatus("viSelTriggersEl_singleLepCalc",1);
-   inputTree->SetBranchStatus("vsSelTriggersMu_singleLepCalc",1);
-   inputTree->SetBranchStatus("viSelTriggersMu_singleLepCalc",1);
+   inputTree->SetBranchStatus("vsSelMCTriggersEl_MultiLepCalc",1);
+   inputTree->SetBranchStatus("viSelMCTriggersEl_MultiLepCalc",1);
+   inputTree->SetBranchStatus("vsSelMCTriggersMu_MultiLepCalc",1);
+   inputTree->SetBranchStatus("viSelMCTriggersMu_MultiLepCalc",1);
+   inputTree->SetBranchStatus("vsSelTriggersEl_MultiLepCalc",1);
+   inputTree->SetBranchStatus("viSelTriggersEl_MultiLepCalc",1);
+   inputTree->SetBranchStatus("vsSelTriggersMu_MultiLepCalc",1);
+   inputTree->SetBranchStatus("viSelTriggersMu_MultiLepCalc",1);
    
-   //electrons **** ADD MORE/NEW ID BRANCHES *****
-   inputTree->SetBranchStatus("elPt_singleLepCalc",1);
-   inputTree->SetBranchStatus("elEta_singleLepCalc",1);
-   inputTree->SetBranchStatus("elPhi_singleLepCalc",1);
-   inputTree->SetBranchStatus("elEnergy_singleLepCalc",1);
-   inputTree->SetBranchStatus("elMVAValue_singleLepCalc",1);
-   inputTree->SetBranchStatus("elMiniIso_singleLepCalc",1);
-   inputTree->SetBranchStatus("elIsTight_singleLepCalc",1);
-   inputTree->SetBranchStatus("elIsMedium_singleLepCalc",1);
-   inputTree->SetBranchStatus("elIsLoose_singleLepCalc",1);
-   inputTree->SetBranchStatus("elIsVeto_singleLepCalc",1);
+   //electrons
+   inputTree->SetBranchStatus("elPt_MultiLepCalc",1);
+   inputTree->SetBranchStatus("elEta_MultiLepCalc",1);
+   inputTree->SetBranchStatus("elPhi_MultiLepCalc",1);
+   inputTree->SetBranchStatus("elEnergy_MultiLepCalc",1);
+   //inputTree->SetBranchStatus("elMVAValue_MultiLepCalc",1);
+   inputTree->SetBranchStatus("elMiniIso_MultiLepCalc",1);
+   //inputTree->SetBranchStatus("elIsTight_MultiLepCalc",1);
+   //inputTree->SetBranchStatus("elIsMedium_MultiLepCalc",1);
+   //inputTree->SetBranchStatus("elIsLoose_MultiLepCalc",1);
+   //inputTree->SetBranchStatus("elIsVeto_MultiLepCalc",1);
 
    
-   //muons  **** ADD MORE/NEW ID BRANCHES *****
-   inputTree->SetBranchStatus("muPt_singleLepCalc",1);
-   inputTree->SetBranchStatus("muEta_singleLepCalc",1);
-   inputTree->SetBranchStatus("muPhi_singleLepCalc",1);
-   inputTree->SetBranchStatus("muEnergy_singleLepCalc",1);
-   inputTree->SetBranchStatus("muMiniIso_singleLepCalc",1);
-   inputTree->SetBranchStatus("muIsTight_singleLepCalc",1);
-   inputTree->SetBranchStatus("muIsMedium_singleLepCalc",1);
-   inputTree->SetBranchStatus("muIsMediumPrompt_singleLepCalc",1);
-   inputTree->SetBranchStatus("muIsLoose_singleLepCalc",1);
+   //muons
+   inputTree->SetBranchStatus("muPt_MultiLepCalc",1);
+   inputTree->SetBranchStatus("muEta_MultiLepCalc",1);
+   inputTree->SetBranchStatus("muPhi_MultiLepCalc",1);
+   inputTree->SetBranchStatus("muEnergy_MultiLepCalc",1);
+   inputTree->SetBranchStatus("muMiniIso_MultiLepCalc",1);
+   //inputTree->SetBranchStatus("muIsTight_MultiLepCalc",1);
+   //inputTree->SetBranchStatus("muIsMedium_MultiLepCalc",1);
+   //inputTree->SetBranchStatus("muIsMediumPrompt_MultiLepCalc",1);
+   //inputTree->SetBranchStatus("muIsLoose_MultiLepCalc",1);
 
    //missing et
-   inputTree->SetBranchStatus("corr_met_singleLepCalc",1);
-   inputTree->SetBranchStatus("corr_met_phi_singleLepCalc",1);
+   inputTree->SetBranchStatus("corr_met_MultiLepCalc",1);
+   inputTree->SetBranchStatus("corr_met_phi_MultiLepCalc",1);
+   inputTree->SetBranchStatus("corr_metmod_MultiLepCalc",1);
+   inputTree->SetBranchStatus("corr_metmod_phi_MultiLepCalc",1);
 
    //boosted truth
    inputTree->SetBranchStatus("HadronicVHtPt_JetSubCalc",1);
@@ -157,7 +163,6 @@ void step1::Loop()
    inputTree->SetBranchStatus("HadronicVHtD2Phi_JetSubCalc",1);
    inputTree->SetBranchStatus("HadronicVHtD2E_JetSubCalc",1);
 
-   //jets *** CHECK ALL THESE NAMES, ADD BEST, ADD DeepAK8, Add DoubleB discrim, ADD DeepCSV from singleLepCalc ****
    //JetSubCalc
    inputTree->SetBranchStatus("theJetHFlav_JetSubCalc",1);
    inputTree->SetBranchStatus("theJetPFlav_JetSubCalc",1);
@@ -212,7 +217,7 @@ void step1::Loop()
    inputTree->SetBranchStatus("allTopsPt_TTbarMassCalc",1);
    inputTree->SetBranchStatus("allTopsID_TTbarMassCalc",1);
    inputTree->SetBranchStatus("allTopsStatus_TTbarMassCalc",1);
-   inputTree->SetBranchStatus("isTau_singleLepCalc",1);
+   inputTree->SetBranchStatus("isTau_MultiLepCalc",1);
 
   // ----------------------------------------------------------------------------
   // Create output tree and define branches
@@ -228,8 +233,8 @@ void step1::Loop()
    outputTree->Branch("event_CommonCalc",&event_CommonCalc,"event_CommonCalc/L");
    outputTree->Branch("run_CommonCalc",&run_CommonCalc,"run_CommonCalc/I");
    outputTree->Branch("lumi_CommonCalc",&lumi_CommonCalc,"lumi_CommonCalc/I");
-   outputTree->Branch("nPV_singleLepCalc",&nPV_singleLepCalc,"nPV_singleLepCalc/I");
-   outputTree->Branch("nTrueInteractions_singleLepCalc",&nTrueInteractions_singleLepCalc,"nTrueInteractions_singleLepCalc/I");
+   //outputTree->Branch("nPV_MultiLepCalc",&nPV_MultiLepCalc,"nPV_MultiLepCalc/I");
+   outputTree->Branch("nTrueInteractions_MultiLepCalc",&nTrueInteractions_MultiLepCalc,"nTrueInteractions_MultiLepCalc/I");
    outputTree->Branch("isElectron",&isElectron,"isElectron/I");
    outputTree->Branch("isMuon",&isMuon,"isMuon/I");
    outputTree->Branch("MCPastTrigger",&MCPastTrigger,"MCPastTrigger/I");
@@ -248,7 +253,7 @@ void step1::Loop()
    outputTree->Branch("isBZBZ_TpTpCalc",&isBZBZ_TpTpCalc,"isBZBZ_TpTpCalc/O");
    outputTree->Branch("tPrimePt_TpTpCalc",&tPrimePt_TpTpCalc,"tPrimePt_TpTpCalc/O");
    outputTree->Branch("NLeptonDecays_TpTpCalc",&NLeptonDecays_TpTpCalc,"NLeptonDecays_TpTpCalc/I");
-   outputTree->Branch("MCWeight_singleLepCalc",&MCWeight_singleLepCalc,"MCWeight_singleLepCalc/D");
+   outputTree->Branch("MCWeight_MultiLepCalc",&MCWeight_MultiLepCalc,"MCWeight_MultiLepCalc/D");
    outputTree->Branch("renormWeights",&renormWeights);
    outputTree->Branch("pdfWeights",&pdfWeights);
    outputTree->Branch("pileupWeight",&pileupWeight,"pileupWeight/F");
@@ -257,15 +262,15 @@ void step1::Loop()
    outputTree->Branch("HTSF_Pol",&HTSF_Pol,"HTSF_Pol/F");
    outputTree->Branch("HTSF_PolUp",&HTSF_PolUp,"HTSF_PolUp/F");
    outputTree->Branch("HTSF_PolDn",&HTSF_PolDn,"HTSF_PolDn/F");
-   outputTree->Branch("isTau_singleLepCalc",&isTau_singleLepCalc,"isTau_singleLepCalc/O");
-   outputTree->Branch("corr_met_singleLepCalc",&corr_met_singleLepCalc,"corr_met_singleLepCalc/D");
-   outputTree->Branch("corr_met_phi_singleLepCalc",&corr_met_phi_singleLepCalc,"corr_met_phi_singleLepCalc/D");
-   outputTree->Branch("leptonPt_singleLepCalc",&leptonPt_singleLepCalc,"leptonPt_singleLepCalc/F");
-   outputTree->Branch("leptonEta_singleLepCalc",&leptonEta_singleLepCalc,"leptonEta_singleLepCalc/F");
-   outputTree->Branch("leptonPhi_singleLepCalc",&leptonPhi_singleLepCalc,"leptonPhi_singleLepCalc/F");
-   outputTree->Branch("leptonEnergy_singleLepCalc",&leptonEnergy_singleLepCalc,"leptonEnergy_singleLepCalc/F");
-   outputTree->Branch("leptonMVAValue_singleLepCalc",&leptonMVAValue_singleLepCalc,"leptonMVAValue_singleLepCalc/F");
-   outputTree->Branch("leptonMiniIso_singleLepCalc",&leptonMiniIso_singleLepCalc,"leptonMiniIso_singleLepCalc/F");
+   outputTree->Branch("isTau_MultiLepCalc",&isTau_MultiLepCalc,"isTau_MultiLepCalc/O");
+   outputTree->Branch("corr_met_MultiLepCalc",&corr_met_MultiLepCalc,"corr_met_MultiLepCalc/D");
+   outputTree->Branch("corr_met_phi_MultiLepCalc",&corr_met_phi_MultiLepCalc,"corr_met_phi_MultiLepCalc/D");
+   outputTree->Branch("leptonPt_MultiLepCalc",&leptonPt_MultiLepCalc,"leptonPt_MultiLepCalc/F");
+   outputTree->Branch("leptonEta_MultiLepCalc",&leptonEta_MultiLepCalc,"leptonEta_MultiLepCalc/F");
+   outputTree->Branch("leptonPhi_MultiLepCalc",&leptonPhi_MultiLepCalc,"leptonPhi_MultiLepCalc/F");
+   outputTree->Branch("leptonEnergy_MultiLepCalc",&leptonEnergy_MultiLepCalc,"leptonEnergy_MultiLepCalc/F");
+   outputTree->Branch("leptonMVAValue_MultiLepCalc",&leptonMVAValue_MultiLepCalc,"leptonMVAValue_MultiLepCalc/F");
+   outputTree->Branch("leptonMiniIso_MultiLepCalc",&leptonMiniIso_MultiLepCalc,"leptonMiniIso_MultiLepCalc/F");
    outputTree->Branch("theJetPt_JetSubCalc_PtOrdered",&theJetPt_JetSubCalc_PtOrdered);
    outputTree->Branch("theJetEta_JetSubCalc_PtOrdered",&theJetEta_JetSubCalc_PtOrdered);
    outputTree->Branch("theJetPhi_JetSubCalc_PtOrdered",&theJetPhi_JetSubCalc_PtOrdered);
@@ -352,14 +357,14 @@ void step1::Loop()
    outputTree->Branch("deltaR_lepBJets",&deltaR_lepBJets);
    outputTree->Branch("deltaR_lepAK8s",&deltaR_lepAK8s);
 
-   outputTree->Branch("muIsLoose_singleLepCalc",&muIsLoose_singleLepCalc);
-   outputTree->Branch("muIsMedium_singleLepCalc",&muIsMedium_singleLepCalc);
-   outputTree->Branch("muIsMediumPrompt_singleLepCalc",&muIsMediumPrompt_singleLepCalc);
-   outputTree->Branch("muIsTight_singleLepCalc",&muIsTight_singleLepCalc);
-   outputTree->Branch("elIsTight_singleLepCalc",&elIsTight_singleLepCalc,"elIsTight_singleLepCalc/F");
-   outputTree->Branch("elIsMedium_singleLepCalc",&elIsTight_singleLepCalc,"elIsMedium_singleLepCalc/F");
-   outputTree->Branch("elIsLoose_singleLepCalc",&elIsTight_singleLepCalc,"elIsLoose_singleLepCalc/F");
-   outputTree->Branch("elIsVeto_singleLepCalc",&elIsTight_singleLepCalc,"elIsVeto_singleLepCalc/F");
+   outputTree->Branch("muIsLoose_MultiLepCalc",&muIsLoose_MultiLepCalc);
+   outputTree->Branch("muIsMedium_MultiLepCalc",&muIsMedium_MultiLepCalc);
+   outputTree->Branch("muIsMediumPrompt_MultiLepCalc",&muIsMediumPrompt_MultiLepCalc);
+   outputTree->Branch("muIsTight_MultiLepCalc",&muIsTight_MultiLepCalc);
+   outputTree->Branch("elIsTight_MultiLepCalc",&elIsTight_MultiLepCalc,"elIsTight_MultiLepCalc/F");
+   outputTree->Branch("elIsMedium_MultiLepCalc",&elIsTight_MultiLepCalc,"elIsMedium_MultiLepCalc/F");
+   outputTree->Branch("elIsLoose_MultiLepCalc",&elIsTight_MultiLepCalc,"elIsLoose_MultiLepCalc/F");
+   outputTree->Branch("elIsVeto_MultiLepCalc",&elIsTight_MultiLepCalc,"elIsVeto_MultiLepCalc/F");
    outputTree->Branch("EGammaGsfSF",&EGammaGsfSF,"EGammaGsfSF/F");
    outputTree->Branch("lepIdSF",&lepIdSF,"lepIdSF/F");
 
@@ -707,11 +712,11 @@ void step1::Loop()
       // **** Choose an electron and muon ID for "tight" and find events with only 1 tight el or mu by that definition
       isElectron = 0;
       isMuon = 0;
-      if(elPt_singleLepCalc->size()==0 && muPt_singleLepCalc->size()==0){std::cout << "got no leptons, something wrong" << std::endl; continue;}
-      if(elPt_singleLepCalc->size()>0 && muPt_singleLepCalc->size()>0) std::cout << "got el and mu, something wrong" << std::endl;
-      if(elPt_singleLepCalc->size()>1 || muPt_singleLepCalc->size()>1) std::cout << "got more than one el or mu, something wrong" << std::endl;
-      if(elPt_singleLepCalc->size()>0 && muPt_singleLepCalc->size()==0) {isElectron = 1; isMuon = 0;}
-      if(elPt_singleLepCalc->size()==0 && muPt_singleLepCalc->size()>0) {isElectron = 0; isMuon = 1;}
+      if(elPt_MultiLepCalc->size()==0 && muPt_MultiLepCalc->size()==0){std::cout << "got no leptons, something wrong" << std::endl; continue;}
+      if(elPt_MultiLepCalc->size()>0 && muPt_MultiLepCalc->size()>0) std::cout << "got el and mu, something wrong" << std::endl;
+      if(elPt_MultiLepCalc->size()>1 || muPt_MultiLepCalc->size()>1) std::cout << "got more than one el or mu, something wrong" << std::endl;
+      if(elPt_MultiLepCalc->size()>0 && muPt_MultiLepCalc->size()==0) {isElectron = 1; isMuon = 0;}
+      if(elPt_MultiLepCalc->size()==0 && muPt_MultiLepCalc->size()>0) {isElectron = 0; isMuon = 1;}
       if(isElectron==0 && isMuon==0){std::cout << "got no leptons, something wrong" << std::endl; continue;}
 
       if(isSM && isElectron == 1) continue;
@@ -720,8 +725,8 @@ void step1::Loop()
         counterHist->Fill(1.5);
       double leppt = 0;
       double lepeta = 0;
-      if(isElectron){leppt = elPt_singleLepCalc->at(0); lepeta = elEta_singleLepCalc->at(0);}
-      if(isMuon){leppt = muPt_singleLepCalc->at(0); lepeta = muEta_singleLepCalc->at(0);}
+      if(isElectron){leppt = elPt_MultiLepCalc->at(0); lepeta = elEta_MultiLepCalc->at(0);}
+      if(isMuon){leppt = muPt_MultiLepCalc->at(0); lepeta = muEta_MultiLepCalc->at(0);}
 
       // ----------------------------------------------------------------------------
       // Pileup weight calculation
@@ -732,15 +737,15 @@ void step1::Loop()
       pileupWeightDown = 1.0;
 	
       if(isMC){
-	if(nTrueInteractions_singleLepCalc > 79) nTrueInteractions_singleLepCalc = 79;
-	if(nTrueInteractions_singleLepCalc < 0) nTrueInteractions_singleLepCalc = 0;
+	if(nTrueInteractions_MultiLepCalc > 79) nTrueInteractions_MultiLepCalc = 79;
+	if(nTrueInteractions_MultiLepCalc < 0) nTrueInteractions_MultiLepCalc = 0;
 	if(pileupIndex < 1 || pileupIndex > 32){
 	  std::cout << "I don't know this pileup sample, using TTToSemiLeptonic's" << std::endl;
 	  pileupIndex = 14;
 	}
-	pileupWeight = pileupweight[pileupIndex-1][nTrueInteractions_singleLepCalc];
-	pileupWeightUp = pileupweightUp[pileupIndex-1][nTrueInteractions_singleLepCalc];
-	pileupWeightDown = pileupweightDn[pileupIndex-1][nTrueInteractions_singleLepCalc];
+	pileupWeight = pileupweight[pileupIndex-1][nTrueInteractions_MultiLepCalc];
+	pileupWeightUp = pileupweightUp[pileupIndex-1][nTrueInteractions_MultiLepCalc];
+	pileupWeightDown = pileupweightDn[pileupIndex-1][nTrueInteractions_MultiLepCalc];
       }
 
       // ----------------------------------------------------------------------------
@@ -761,13 +766,13 @@ void step1::Loop()
 	  std::string string_d = "Ele15_IsoVVVL_PFHT600";
 	  std::string string_ORa = "Ele35_WPTight_Gsf";
 	  std::string string_ORb = "Ele38_WPTight_Gsf";
-	  for(unsigned int itrig=0; itrig < vsSelMCTriggersEl_singleLepCalc->size(); itrig++){
-	    if(vsSelMCTriggersEl_singleLepCalc->at(itrig).find(string_a) != std::string::npos && viSelMCTriggersEl_singleLepCalc->at(itrig) > 0) MCPastTrigger = 1;
-	    if(vsSelMCTriggersEl_singleLepCalc->at(itrig).find(string_b) != std::string::npos && viSelMCTriggersEl_singleLepCalc->at(itrig) > 0) MCPastTrigger = 1;
-            if(vsSelMCTriggersEl_singleLepCalc->at(itrig).find(string_c) != std::string::npos && viSelMCTriggersEl_singleLepCalc->at(itrig) > 0) MCPastTrigger = 1;
-            if(vsSelMCTriggersEl_singleLepCalc->at(itrig).find(string_d) != std::string::npos && viSelMCTriggersEl_singleLepCalc->at(itrig) > 0) MCPastTrigger = 1;
-	    if(vsSelMCTriggersEl_singleLepCalc->at(itrig).find(string_ORa) != std::string::npos && viSelMCTriggersEl_singleLepCalc->at(itrig) > 0) MCPastTrigger = 1;
-	    if(vsSelMCTriggersEl_singleLepCalc->at(itrig).find(string_ORb) != std::string::npos && viSelMCTriggersEl_singleLepCalc->at(itrig) > 0) MCPastTrigger = 1;
+	  for(unsigned int itrig=0; itrig < vsSelMCTriggersEl_MultiLepCalc->size(); itrig++){
+	    if(vsSelMCTriggersEl_MultiLepCalc->at(itrig).find(string_a) != std::string::npos && viSelMCTriggersEl_MultiLepCalc->at(itrig) > 0) MCPastTrigger = 1;
+	    if(vsSelMCTriggersEl_MultiLepCalc->at(itrig).find(string_b) != std::string::npos && viSelMCTriggersEl_MultiLepCalc->at(itrig) > 0) MCPastTrigger = 1;
+            if(vsSelMCTriggersEl_MultiLepCalc->at(itrig).find(string_c) != std::string::npos && viSelMCTriggersEl_MultiLepCalc->at(itrig) > 0) MCPastTrigger = 1;
+            if(vsSelMCTriggersEl_MultiLepCalc->at(itrig).find(string_d) != std::string::npos && viSelMCTriggersEl_MultiLepCalc->at(itrig) > 0) MCPastTrigger = 1;
+	    if(vsSelMCTriggersEl_MultiLepCalc->at(itrig).find(string_ORa) != std::string::npos && viSelMCTriggersEl_MultiLepCalc->at(itrig) > 0) MCPastTrigger = 1;
+	    if(vsSelMCTriggersEl_MultiLepCalc->at(itrig).find(string_ORb) != std::string::npos && viSelMCTriggersEl_MultiLepCalc->at(itrig) > 0) MCPastTrigger = 1;
 	  }
 	  // Gsf Tracking scale factor: http://fcouderc.web.cern.ch/fcouderc/EGamma/scaleFactors/Moriond17/approval/RECO/passingRECO/egammaEffi.txt_egammaPlots.pdf
 	  if (leppt < 45) {
@@ -888,14 +893,14 @@ void step1::Loop()
 	  std::string string_e = "Mu15_IsoVVVL_PFHT600";
 	  std::string string_ORb = "Mu50";
 	  std::string string_ORc = "TkMu50";
-	  for(unsigned int itrig=0; itrig < vsSelMCTriggersMu_singleLepCalc->size(); itrig++){
-	    if(vsSelMCTriggersMu_singleLepCalc->at(itrig).find(string_a) != std::string::npos && viSelMCTriggersMu_singleLepCalc->at(itrig) > 0) MCPastTrigger = 1;
-	    if(vsSelMCTriggersMu_singleLepCalc->at(itrig).find(string_b) != std::string::npos && viSelMCTriggersMu_singleLepCalc->at(itrig) > 0) MCPastTrigger = 1;
-            if(vsSelMCTriggersMu_singleLepCalc->at(itrig).find(string_c) != std::string::npos && viSelMCTriggersMu_singleLepCalc->at(itrig) > 0) MCPastTrigger = 1;
-            if(vsSelMCTriggersMu_singleLepCalc->at(itrig).find(string_d) != std::string::npos && viSelMCTriggersMu_singleLepCalc->at(itrig) > 0) MCPastTrigger = 1;
-            if(vsSelMCTriggersMu_singleLepCalc->at(itrig).find(string_e) != std::string::npos && viSelMCTriggersMu_singleLepCalc->at(itrig) > 0) MCPastTrigger = 1;
-	    if(vsSelMCTriggersMu_singleLepCalc->at(itrig).find(string_ORb) != std::string::npos && viSelMCTriggersMu_singleLepCalc->at(itrig) > 0) MCPastTrigger = 1;
-	    if(vsSelMCTriggersMu_singleLepCalc->at(itrig).find(string_ORc) != std::string::npos && viSelMCTriggersMu_singleLepCalc->at(itrig) > 0) MCPastTrigger = 1;
+	  for(unsigned int itrig=0; itrig < vsSelMCTriggersMu_MultiLepCalc->size(); itrig++){
+	    if(vsSelMCTriggersMu_MultiLepCalc->at(itrig).find(string_a) != std::string::npos && viSelMCTriggersMu_MultiLepCalc->at(itrig) > 0) MCPastTrigger = 1;
+	    if(vsSelMCTriggersMu_MultiLepCalc->at(itrig).find(string_b) != std::string::npos && viSelMCTriggersMu_MultiLepCalc->at(itrig) > 0) MCPastTrigger = 1;
+            if(vsSelMCTriggersMu_MultiLepCalc->at(itrig).find(string_c) != std::string::npos && viSelMCTriggersMu_MultiLepCalc->at(itrig) > 0) MCPastTrigger = 1;
+            if(vsSelMCTriggersMu_MultiLepCalc->at(itrig).find(string_d) != std::string::npos && viSelMCTriggersMu_MultiLepCalc->at(itrig) > 0) MCPastTrigger = 1;
+            if(vsSelMCTriggersMu_MultiLepCalc->at(itrig).find(string_e) != std::string::npos && viSelMCTriggersMu_MultiLepCalc->at(itrig) > 0) MCPastTrigger = 1;
+	    if(vsSelMCTriggersMu_MultiLepCalc->at(itrig).find(string_ORb) != std::string::npos && viSelMCTriggersMu_MultiLepCalc->at(itrig) > 0) MCPastTrigger = 1;
+	    if(vsSelMCTriggersMu_MultiLepCalc->at(itrig).find(string_ORc) != std::string::npos && viSelMCTriggersMu_MultiLepCalc->at(itrig) > 0) MCPastTrigger = 1;
 	  }
 	  // Cut based tight id
 	  if (fabs(lepeta) < 2.10 && fabs(lepeta) > 1.20) {
@@ -937,13 +942,13 @@ void step1::Loop()
 	  std::string string_d = "Ele15_IsoVVVL_PFHT600";
 	  std::string string_ORa = "Ele35_WPTight_Gsf";
 	  std::string string_ORb = "Ele38_WPTight_Gsf";
-	  for(unsigned int itrig=0; itrig < vsSelTriggersEl_singleLepCalc->size(); itrig++){
-	    if(vsSelTriggersEl_singleLepCalc->at(itrig).find(string_a) != std::string::npos && viSelTriggersEl_singleLepCalc->at(itrig) > 0) DataPastTrigger = 1;
-	    if(vsSelTriggersEl_singleLepCalc->at(itrig).find(string_b) != std::string::npos && viSelTriggersEl_singleLepCalc->at(itrig) > 0) DataPastTrigger = 1;
-            if(vsSelTriggersEl_singleLepCalc->at(itrig).find(string_c) != std::string::npos && viSelTriggersEl_singleLepCalc->at(itrig) > 0) DataPastTrigger = 1;
-            if(vsSelTriggersEl_singleLepCalc->at(itrig).find(string_d) != std::string::npos && viSelTriggersEl_singleLepCalc->at(itrig) > 0) DataPastTrigger = 1;
-	    if(vsSelTriggersEl_singleLepCalc->at(itrig).find(string_ORa) != std::string::npos && viSelTriggersEl_singleLepCalc->at(itrig) > 0) DataPastTrigger = 1;
-	    if(vsSelTriggersEl_singleLepCalc->at(itrig).find(string_ORb) != std::string::npos && viSelTriggersEl_singleLepCalc->at(itrig) > 0) DataPastTrigger = 1;
+	  for(unsigned int itrig=0; itrig < vsSelTriggersEl_MultiLepCalc->size(); itrig++){
+	    if(vsSelTriggersEl_MultiLepCalc->at(itrig).find(string_a) != std::string::npos && viSelTriggersEl_MultiLepCalc->at(itrig) > 0) DataPastTrigger = 1;
+	    if(vsSelTriggersEl_MultiLepCalc->at(itrig).find(string_b) != std::string::npos && viSelTriggersEl_MultiLepCalc->at(itrig) > 0) DataPastTrigger = 1;
+            if(vsSelTriggersEl_MultiLepCalc->at(itrig).find(string_c) != std::string::npos && viSelTriggersEl_MultiLepCalc->at(itrig) > 0) DataPastTrigger = 1;
+            if(vsSelTriggersEl_MultiLepCalc->at(itrig).find(string_d) != std::string::npos && viSelTriggersEl_MultiLepCalc->at(itrig) > 0) DataPastTrigger = 1;
+	    if(vsSelTriggersEl_MultiLepCalc->at(itrig).find(string_ORa) != std::string::npos && viSelTriggersEl_MultiLepCalc->at(itrig) > 0) DataPastTrigger = 1;
+	    if(vsSelTriggersEl_MultiLepCalc->at(itrig).find(string_ORb) != std::string::npos && viSelTriggersEl_MultiLepCalc->at(itrig) > 0) DataPastTrigger = 1;
 	  }
 	}
 
@@ -957,14 +962,14 @@ void step1::Loop()
 	  std::string string_e = "Mu15_IsoVVVL_PFHT600";
 	  std::string string_ORb = "Mu50";
 	  std::string string_ORc = "TkMu50";
-	  for(unsigned int itrig=0; itrig < vsSelTriggersMu_singleLepCalc->size(); itrig++){
-	    if(vsSelTriggersMu_singleLepCalc->at(itrig).find(string_a) != std::string::npos && viSelTriggersMu_singleLepCalc->at(itrig) > 0) DataPastTrigger = 1;
-	    if(vsSelTriggersMu_singleLepCalc->at(itrig).find(string_b) != std::string::npos && viSelTriggersMu_singleLepCalc->at(itrig) > 0) DataPastTrigger = 1;
-            if(vsSelTriggersMu_singleLepCalc->at(itrig).find(string_c) != std::string::npos && viSelTriggersMu_singleLepCalc->at(itrig) > 0) DataPastTrigger = 1;
-            if(vsSelTriggersMu_singleLepCalc->at(itrig).find(string_d) != std::string::npos && viSelTriggersMu_singleLepCalc->at(itrig) > 0) DataPastTrigger = 1;
-            if(vsSelTriggersMu_singleLepCalc->at(itrig).find(string_e) != std::string::npos && viSelTriggersMu_singleLepCalc->at(itrig) > 0) DataPastTrigger = 1;
-	    if(vsSelTriggersMu_singleLepCalc->at(itrig).find(string_ORb) != std::string::npos && viSelTriggersMu_singleLepCalc->at(itrig) > 0) DataPastTrigger = 1;
-	    if(vsSelTriggersMu_singleLepCalc->at(itrig).find(string_ORc) != std::string::npos && viSelTriggersMu_singleLepCalc->at(itrig) > 0) DataPastTrigger = 1;
+	  for(unsigned int itrig=0; itrig < vsSelTriggersMu_MultiLepCalc->size(); itrig++){
+	    if(vsSelTriggersMu_MultiLepCalc->at(itrig).find(string_a) != std::string::npos && viSelTriggersMu_MultiLepCalc->at(itrig) > 0) DataPastTrigger = 1;
+	    if(vsSelTriggersMu_MultiLepCalc->at(itrig).find(string_b) != std::string::npos && viSelTriggersMu_MultiLepCalc->at(itrig) > 0) DataPastTrigger = 1;
+            if(vsSelTriggersMu_MultiLepCalc->at(itrig).find(string_c) != std::string::npos && viSelTriggersMu_MultiLepCalc->at(itrig) > 0) DataPastTrigger = 1;
+            if(vsSelTriggersMu_MultiLepCalc->at(itrig).find(string_d) != std::string::npos && viSelTriggersMu_MultiLepCalc->at(itrig) > 0) DataPastTrigger = 1;
+            if(vsSelTriggersMu_MultiLepCalc->at(itrig).find(string_e) != std::string::npos && viSelTriggersMu_MultiLepCalc->at(itrig) > 0) DataPastTrigger = 1;
+	    if(vsSelTriggersMu_MultiLepCalc->at(itrig).find(string_ORb) != std::string::npos && viSelTriggersMu_MultiLepCalc->at(itrig) > 0) DataPastTrigger = 1;
+	    if(vsSelTriggersMu_MultiLepCalc->at(itrig).find(string_ORc) != std::string::npos && viSelTriggersMu_MultiLepCalc->at(itrig) > 0) DataPastTrigger = 1;
 	  }
 	}
 	MCPastTrigger = 1;
@@ -983,9 +988,9 @@ void step1::Loop()
 
       if(isMadgraphBkg){
 	// Piece-wise splice with a flat line. Uncertainty from upper/lower error bar fits
-	HTSF_Pol = poly2->Eval(HTfromHEPUEP_singleLepCalc);
-	HTSF_PolUp = poly2U->Eval(HTfromHEPUEP_singleLepCalc);
-	HTSF_PolDn = poly2D->Eval(HTfromHEPUEP_singleLepCalc);
+	HTSF_Pol = poly2->Eval(HTfromHEPUEP_MultiLepCalc);
+	HTSF_PolUp = poly2U->Eval(HTfromHEPUEP_MultiLepCalc);
+	HTSF_PolDn = poly2D->Eval(HTfromHEPUEP_MultiLepCalc);
       }
 
       // ----------------------------------------------------------------------------
@@ -1065,14 +1070,14 @@ void step1::Loop()
       double lepphi;
       if (isMuon){ 
 	lepM = 0.105658367;
-	lepphi = muPhi_singleLepCalc->at(0);
-	lepton_lv.SetPtEtaPhiM(muPt_singleLepCalc->at(0),muEta_singleLepCalc->at(0),muPhi_singleLepCalc->at(0),lepM);
+	lepphi = muPhi_MultiLepCalc->at(0);
+	lepton_lv.SetPtEtaPhiM(muPt_MultiLepCalc->at(0),muEta_MultiLepCalc->at(0),muPhi_MultiLepCalc->at(0),lepM);
       }
       else{
 	lepM = 0.00051099891;
-	lepphi = elPhi_singleLepCalc->at(0);
-	lepton_lv.SetPtEtaPhiM(elPt_singleLepCalc->at(0),elEta_singleLepCalc->at(0),elPhi_singleLepCalc->at(0),lepM);
-      }      MT_lepMet = sqrt(2*leppt*corr_met_singleLepCalc*(1 - cos(lepphi - corr_met_phi_singleLepCalc)));
+	lepphi = elPhi_MultiLepCalc->at(0);
+	lepton_lv.SetPtEtaPhiM(elPt_MultiLepCalc->at(0),elEta_MultiLepCalc->at(0),elPhi_MultiLepCalc->at(0),lepM);
+      }      MT_lepMet = sqrt(2*leppt*corr_met_MultiLepCalc*(1 - cos(lepphi - corr_met_phi_MultiLepCalc)));
       
       // ----------------------------------------------------------------------------
       // Loop over AK8 jets for calculations and pt ordering pair
@@ -1121,7 +1126,7 @@ void step1::Loop()
       //      if(theJetPt_JetSubCalc_PtOrdered.size() > 1 && theJetPt_JetSubCalc_PtOrdered[1] > JetSubLeadPtCut){npass_JetSubLeadPt+=1;isPastJetSubLeadPtCut=1;}
       
       int isPastMETcut = 0;
-      if(corr_met_singleLepCalc > metCut){npass_met+=1;isPastMETcut=1;}
+      if(corr_met_MultiLepCalc > metCut){npass_met+=1;isPastMETcut=1;}
 
       int isPastLepPtCut = 0;
       if(leppt > lepPtCut){npass_lepPt+=1;isPastLepPtCut=1;}
@@ -1134,7 +1139,7 @@ void step1::Loop()
       if(isMuon){Nmuons+=1;}
       
       AK4HTpMETpLepPt = 0;
-      AK4HTpMETpLepPt = AK4HT + corr_met_singleLepCalc + leppt;
+      AK4HTpMETpLepPt = AK4HT + corr_met_MultiLepCalc + leppt;
 
 
       // ----------------------------------------------------------------------------
@@ -1157,20 +1162,22 @@ void step1::Loop()
 
       // ******** MAYBE NEED SOME OTHERS?
       if(isElectron){
-	leptonPt_singleLepCalc = leppt;
-	leptonEta_singleLepCalc = lepeta;
-	leptonPhi_singleLepCalc = elPhi_singleLepCalc->at(0);
-	leptonEnergy_singleLepCalc = elEnergy_singleLepCalc->at(0);
-	leptonMiniIso_singleLepCalc = elMiniIso_singleLepCalc->at(0);
-	leptonMVAValue_singleLepCalc = elMVAValue_singleLepCalc->at(0);
+      //std::cout<<"YITING debugging1"<<std::endl;
+	leptonPt_MultiLepCalc = leppt;
+	leptonEta_MultiLepCalc = lepeta;
+	leptonPhi_MultiLepCalc = elPhi_MultiLepCalc->at(0);
+	leptonEnergy_MultiLepCalc = elEnergy_MultiLepCalc->at(0);
+	leptonMiniIso_MultiLepCalc = elMiniIso_MultiLepCalc->at(0);
+	leptonMVAValue_MultiLepCalc = -99.9; //elMVAValue_MultiLepCalc->at(0);
+      //std::cout<<"YITING debugging2"<<std::endl;
       }
       if(isMuon){
-	leptonPt_singleLepCalc = leppt;
-	leptonEta_singleLepCalc = lepeta;
-	leptonPhi_singleLepCalc = muPhi_singleLepCalc->at(0);
-	leptonEnergy_singleLepCalc = muEnergy_singleLepCalc->at(0);
-	leptonMiniIso_singleLepCalc = muMiniIso_singleLepCalc->at(0);
-	leptonMVAValue_singleLepCalc = -99.9;
+	leptonPt_MultiLepCalc = leppt;
+	leptonEta_MultiLepCalc = lepeta;
+	leptonPhi_MultiLepCalc = muPhi_MultiLepCalc->at(0);
+	leptonEnergy_MultiLepCalc = muEnergy_MultiLepCalc->at(0);
+	leptonMiniIso_MultiLepCalc = muMiniIso_MultiLepCalc->at(0);
+	leptonMVAValue_MultiLepCalc = -99.9;
       }
 
       // ----------------------------------------------------------------------------
@@ -1625,9 +1632,9 @@ void step1::Loop()
       // W --> l nu with mass constraint
       // ----------------------------------------------------------------------------
 
-      double metpx = corr_met_singleLepCalc*cos(corr_met_phi_singleLepCalc);
-      double metpy = corr_met_singleLepCalc*sin(corr_met_phi_singleLepCalc);
-      double metpt = corr_met_singleLepCalc;
+      double metpx = corr_met_MultiLepCalc*cos(corr_met_phi_MultiLepCalc);
+      double metpy = corr_met_MultiLepCalc*sin(corr_met_phi_MultiLepCalc);
+      double metpt = corr_met_MultiLepCalc;
 
       double Dtmp = (MW*MW)-(lepM*lepM)+2*((lepton_lv.Px())*(metpx)+(lepton_lv.Py())*(metpy));
       double Atmp = 4.0*((lepton_lv.Energy())*(lepton_lv.Energy())-(lepton_lv.Pz())*(lepton_lv.Pz()));
@@ -1745,46 +1752,46 @@ void step1::Loop()
       pdfWeights.clear();
       if(isSig){
 	// SEEMS TO APPLY TO ALL B2G MG+PYTHIA SIGNALS. LEADING ORDER 4-FLAVOR PDF
-	for(unsigned int i = 0; i < LHEweightids_singleLepCalc->size(); i++){
-	  if(LHEweightids_singleLepCalc->at(i) > 1 && LHEweightids_singleLepCalc->at(i) < 10){
-	    if(LHEweightids_singleLepCalc->at(i) == 6 || LHEweightids_singleLepCalc->at(i) == 8) continue;
-	    renorm.push_back(LHEweights_singleLepCalc->at(i));
-	    renormWeights.push_back(LHEweights_singleLepCalc->at(i));
+	for(unsigned int i = 0; i < LHEweightids_MultiLepCalc->size(); i++){
+	  if(LHEweightids_MultiLepCalc->at(i) > 1 && LHEweightids_MultiLepCalc->at(i) < 10){
+	    if(LHEweightids_MultiLepCalc->at(i) == 6 || LHEweightids_MultiLepCalc->at(i) == 8) continue;
+	    renorm.push_back(LHEweights_MultiLepCalc->at(i));
+	    renormWeights.push_back(LHEweights_MultiLepCalc->at(i));
 	  }
-	  if(LHEweightids_singleLepCalc->at(i) > 111 && LHEweightids_singleLepCalc->at(i) < 212){
-	    pdf.push_back(LHEweights_singleLepCalc->at(i));	    
-	    pdfWeights.push_back(LHEweights_singleLepCalc->at(i));	    
+	  if(LHEweightids_MultiLepCalc->at(i) > 111 && LHEweightids_MultiLepCalc->at(i) < 212){
+	    pdf.push_back(LHEweights_MultiLepCalc->at(i));	    
+	    pdfWeights.push_back(LHEweights_MultiLepCalc->at(i));	    
 	  }
 	}
       }
       else if(isMadgraphBkg){
 	// SEEMS TO APPLY TO OTHER MG+PYTHIA BACKGROUNDS. LEADING ORDER 5-FLAVOR PDF
-	for(unsigned int i = 0; i < LHEweightids_singleLepCalc->size(); i++){
-	  if(LHEweightids_singleLepCalc->at(i) > 1 && LHEweightids_singleLepCalc->at(i) < 10){
-	    if(LHEweightids_singleLepCalc->at(i) == 6 || LHEweightids_singleLepCalc->at(i) == 8) continue;
-	    renorm.push_back(LHEweights_singleLepCalc->at(i));
-	    renormWeights.push_back(LHEweights_singleLepCalc->at(i));
+	for(unsigned int i = 0; i < LHEweightids_MultiLepCalc->size(); i++){
+	  if(LHEweightids_MultiLepCalc->at(i) > 1 && LHEweightids_MultiLepCalc->at(i) < 10){
+	    if(LHEweightids_MultiLepCalc->at(i) == 6 || LHEweightids_MultiLepCalc->at(i) == 8) continue;
+	    renorm.push_back(LHEweights_MultiLepCalc->at(i));
+	    renormWeights.push_back(LHEweights_MultiLepCalc->at(i));
 	  }
-	  if(LHEweightids_singleLepCalc->at(i) > 10 && LHEweightids_singleLepCalc->at(i) < 111){
-	    pdf.push_back(LHEweights_singleLepCalc->at(i));
-	    pdfWeights.push_back(LHEweights_singleLepCalc->at(i));
+	  if(LHEweightids_MultiLepCalc->at(i) > 10 && LHEweightids_MultiLepCalc->at(i) < 111){
+	    pdf.push_back(LHEweights_MultiLepCalc->at(i));
+	    pdfWeights.push_back(LHEweights_MultiLepCalc->at(i));
 	  }
 	}
       }
       else{
 	// SEEMS TO APPLY TO ALL POWHEG AND MC@NLO BACKGROUNDS. NLO PDFs
-	for(unsigned int i = 0; i < LHEweightids_singleLepCalc->size(); i++){
-	  if(LHEweightids_singleLepCalc->at(i) > 1001 && LHEweightids_singleLepCalc->at(i) < 1010){
-	    if(LHEweightids_singleLepCalc->at(i) == 1006 || LHEweightids_singleLepCalc->at(i) == 1008) continue;
-	    renorm.push_back(LHEweights_singleLepCalc->at(i));
-	    renormWeights.push_back(LHEweights_singleLepCalc->at(i));
+	for(unsigned int i = 0; i < LHEweightids_MultiLepCalc->size(); i++){
+	  if(LHEweightids_MultiLepCalc->at(i) > 1001 && LHEweightids_MultiLepCalc->at(i) < 1010){
+	    if(LHEweightids_MultiLepCalc->at(i) == 1006 || LHEweightids_MultiLepCalc->at(i) == 1008) continue;
+	    renorm.push_back(LHEweights_MultiLepCalc->at(i));
+	    renormWeights.push_back(LHEweights_MultiLepCalc->at(i));
 	  }
-	  if(LHEweightids_singleLepCalc->at(i) > 2000 && LHEweightids_singleLepCalc->at(i) < 2101){
-	    pdf.push_back(LHEweights_singleLepCalc->at(i));
-	    pdfWeights.push_back(LHEweights_singleLepCalc->at(i));
+	  if(LHEweightids_MultiLepCalc->at(i) > 2000 && LHEweightids_MultiLepCalc->at(i) < 2101){
+	    pdf.push_back(LHEweights_MultiLepCalc->at(i));
+	    pdfWeights.push_back(LHEweights_MultiLepCalc->at(i));
 	  }
-	  if(LHEweightids_singleLepCalc->at(i) == 2101 || LHEweightids_singleLepCalc->at(i) == 2102){
-	    alphaSWeights.push_back(LHEweights_singleLepCalc->at(i));
+	  if(LHEweightids_MultiLepCalc->at(i) == 2101 || LHEweightids_MultiLepCalc->at(i) == 2102){
+	    alphaSWeights.push_back(LHEweights_MultiLepCalc->at(i));
 	  }
 	}
       }
